@@ -11,6 +11,6 @@ class AdminController extends Controller
         $this->middleware('auth');
     }
     public function index(){
-        echo 'hello';
+        return view('admin.dashboard.home');
     }
 }
