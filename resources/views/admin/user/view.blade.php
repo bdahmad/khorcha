@@ -9,7 +9,7 @@
             <i class="fab fa-gg-circle"></i>View User Information
           </div>
           <div class="col-md-4 card_button_part">
-            <a href="all-user.html" class="btn btn-sm btn-dark"><i class="fas fa-th"></i>All User</a>
+            <a href="{{route('all-user')}}" class="btn btn-sm btn-dark"><i class="fas fa-th"></i>All User</a>
           </div>
         </div>
       </div>

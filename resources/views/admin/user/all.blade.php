@@ -9,7 +9,7 @@
             <i class="fab fa-gg-circle"></i>All User Information
           </div>
           <div class="col-md-4 card_button_part">
-            <a href="add-user.html" class="btn btn-sm btn-dark"><i class="fas fa-plus-circle"></i>Add User</a>
+            <a href="{{route('add-user')}}" class="btn btn-sm btn-dark"><i class="fas fa-plus-circle"></i>Add User</a>
           </div>
         </div>
       </div>
@@ -53,8 +53,8 @@
                 <div class="btn-group btn_group_manage" role="group">
                   <button type="button" class="btn btn-sm btn-dark dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">Manage</button>
                   <ul class="dropdown-menu">
-                    <li><a class="dropdown-item" href="#">View</a></li>
-                    <li><a class="dropdown-item" href="#">Edit</a></li>
+                    <li><a class="dropdown-item" href="{{route('view-user')}}">View</a></li>
+                    <li><a class="dropdown-item" href="{{route('edit-user')}}">Edit</a></li>
                     <li><a class="dropdown-item" href="#">Delete</a></li>
                   </ul>
                 </div>
