@@ -3,8 +3,9 @@
 namespace App\Http\Controllers;
 
 use App\Models\IncomeCategory;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
-use Illuminate\Support\Carbon\Carbon;
+use Illuminate\Support\Str;
 use Symfony\Component\HttpFoundation\Session\Session;
 use Illuminate\Support\Facades\Auth;
 
@@ -34,9 +35,21 @@ class IncomeCategoryController extends Controller
     }
     public function insert(Request $request)
     {
+        $this->validate($request,[
+
+        ],[
+
+        ]);
+        // $slug = 'IC'.uniqid(20);
+        $slug = Str::slug($request['name'], '-');
+        $creator = Auth::user()->id;
         IncomeCategory::insert([
             'income_cate_name' => $request['name'],
             'income_cate_remarks' => $request['remarks'],
+            'income_cate_slug' => $slug,
+            'income_cate_creator' => $creator,
+
+            'created_at' => Carbon::now()->toDateTimeString(),
         ]);
     }
     public function update()

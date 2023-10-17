@@ -16,10 +16,20 @@
           </div>
         </div>
         <div class="card-body">
-          <div class="row mb-3">
+          @if(Session::has('error'))
+          <div class="alert alert-danger alerterror " role="alert">
+                  <strong>Opps!</strong>{{Session::get('error')}}
+                </div>
+          @endif
+          <div class="row mb-3 {{ $errors->has('name')?'has-error':'' }}">
             <label class="col-sm-3 col-form-label col_form_label">Category Name<span class="req_star">*</span>:</label>
             <div class="col-sm-7">
               <input type="text" class="form-control form_control" id="" name="name">
+              @if($errors->has('name'))
+                <span class="invalid-feedback " role="alert">
+                  <strong>{{$errors->first('name')}}</strong>
+                </span>
+              @endif
             </div>
           </div>
           <div class="row mb-3">
