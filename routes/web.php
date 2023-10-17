@@ -6,6 +6,9 @@ use App\Http\Controllers\UserController;
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\IncomeController;
 use App\Http\Controllers\ExpenseController;
+use App\Http\Controllers\IncomeCategoryController;
+use App\Http\Controllers\ExpenseCategoryController;
+use App\Models\ExpenseCategory;
 
 Route::get('/', function () {
     return view('welcome');
@@ -33,8 +36,18 @@ Route::post('/dashboard/income/update', [IncomeController::class, 'update'])->na
 Route::post('/dashboard/income/softdelete', [IncomeController::class, 'softdelete'])->name('');
 Route::post('/dashboard/income/restore', [IncomeController::class, 'restore'])->name('');
 Route::post('/dashboard/income/delete', [IncomeController::class, 'delete'])->name('');
-Route::get('/dashboard/income', [IncomeController::class, 'index'])->name('');
 
+Route::get('/dashboard/income/category', [IncomeCategoryController::class, 'index'])->name('all-in-cate');
+Route::get('/dashboard/income/category/add', [IncomeCategoryController::class, 'add'])->name('add-in-cate');
+Route::get('/dashboard/income/category/edit', [IncomeCategoryController::class, 'edit'])->name('edit-in-cate');
+Route::get('/dashboard/income/category/view', [IncomeCategoryController::class, 'view'])->name('view-in-cate');
+Route::post('/dashboard/income/category/submit', [IncomeCategoryController::class, 'insert'])->name('insert-in-cate');
+Route::post('/dashboard/income/category/update', [IncomeCategoryController::class, 'update'])->name('update-in-cate');
+Route::post('/dashboard/income/category/softdelete', [IncomeCategoryController::class, 'softdelete'])->name('softDelete-in-cate');
+Route::post('/dashboard/income/category/restore', [IncomeCategoryController::class, 'restore'])->name('restore-in-cate');
+Route::post('/dashboard/income/category/delete', [IncomeCategoryController::class, 'delete'])->name('delete-in-cate');
+
+Route::get('/dashboard/expense/', [ExpenseController::class, 'index'])->name('');
 Route::get('/dashboard/expense/add', [ExpenseController::class, 'add'])->name('');
 Route::get('/dashboard/expense/edit', [ExpenseController::class, 'edit'])->name('');
 Route::get('/dashboard/expense/view', [ExpenseController::class, 'view'])->name('');
@@ -43,5 +56,15 @@ Route::post('/dashboard/expense/update', [ExpenseController::class, 'update'])->
 Route::post('/dashboard/expense/softdelete', [ExpenseController::class, 'softdelete'])->name('');
 Route::post('/dashboard/expense/restore', [ExpenseController::class, 'restore'])->name('');
 Route::post('/dashboard/expense/delete', [ExpenseController::class, 'delete'])->name('');
+
+Route::get('/dashboard/expense/category/', [ExpenseCategoryController::class, 'index'])->name('');
+Route::get('/dashboard/expense/category/add', [ExpenseCategoryController::class, 'add'])->name('');
+Route::get('/dashboard/expense/category/edit', [ExpenseCategoryController::class, 'edit'])->name('');
+Route::get('/dashboard/expense/category/view', [ExpenseCategoryController::class, 'view'])->name('');
+Route::post('/dashboard/expense/category/submit', [ExpenseCategoryController::class, 'insert'])->name('');
+Route::post('/dashboard/expense/category/update', [ExpenseCategoryController::class, 'update'])->name('');
+Route::post('/dashboard/expense/category/softdelete', [ExpenseCategoryController::class, 'softdelete'])->name('');
+Route::post('/dashboard/expense/category/restore', [ExpenseCategoryController::class, 'restore'])->name('');
+Route::post('/dashboard/expense/category/delete', [ExpenseCategoryController::class, 'delete'])->name('');
 
 require __DIR__ . '/auth.php';
