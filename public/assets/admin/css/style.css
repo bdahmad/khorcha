@@ -61,9 +61,9 @@ body{
 }
 
 /*content part code start*/
-.content_part{
+/* .content_part{
     
-}
+} */
 
 .sidebar_part{
     background-color: #252c34;
@@ -102,18 +102,18 @@ body{
 .user_part p i{
    color: green;
 }
-
+/* 
 .menu{
     
-}
+} */
 
 .menu ul{
     padding-left: 0px;
 }
 
-.menu ul li{
+/* .menu ul li{
     
-}
+} */
 
 .menu ul li a{
    color: #ccc;
@@ -135,9 +135,9 @@ body{
     margin-right: 5px;   
 }
 
-.content{
+/* .content{
     
-}
+} */
 
 .breadcumb_part{
     background-color: #f5f5f5;
@@ -182,9 +182,9 @@ body{
     background-color: #16171D;
 }
 
-.copyright{
+/* .copyright{
     
-}
+} */
 
 .copyright p{
     font-size: 13px;
@@ -248,9 +248,9 @@ span.req_star{
     padding-right: 0px;
 }
 
-.form_control{
+/* .form_control{
     
-}
+} */
 
 .btn_group_manage button{
     font-size: 12px;

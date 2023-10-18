@@ -6,7 +6,7 @@ use App\Models\IncomeCategory;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Str;
-use Symfony\Component\HttpFoundation\Session\Session;
+use Illuminate\Support\Facades\Session;
 use Illuminate\Support\Facades\Auth;
 
 class IncomeCategoryController extends Controller
@@ -36,14 +36,14 @@ class IncomeCategoryController extends Controller
     public function insert(Request $request)
     {
         $this->validate($request,[
-
+            'name'=> 'required | max:50 | unique:income_categories,income_cate_name',
         ],[
-
+            'name.required'=>'Please enter income category name.',
         ]);
         // $slug = 'IC'.uniqid(20);
         $slug = Str::slug($request['name'], '-');
         $creator = Auth::user()->id;
-        IncomeCategory::insert([
+        $insert = IncomeCategory::insert([
             'income_cate_name' => $request['name'],
             'income_cate_remarks' => $request['remarks'],
             'income_cate_slug' => $slug,
@@ -51,6 +51,14 @@ class IncomeCategoryController extends Controller
 
             'created_at' => Carbon::now()->toDateTimeString(),
         ]);
+
+        if($insert){
+            Session::flash('success','Successfully add income category information.');
+            return redirect('dashboard/income/category/add');
+        }else{
+            Session::flash('error','Oops! Operation failed.');
+            return redirect('dashboard/income/category/add');
+        }
     }
     public function update()
     {

@@ -16,26 +16,37 @@
           </div>
         </div>
         <div class="card-body">
-          @if(Session::has('error'))
-          <div class="alert alert-danger alerterror " role="alert">
-                  <strong>Opps!</strong>{{Session::get('error')}}
-                </div>
-          @endif
+          <div class="row">
+            <div class="col-md-2"></div>
+            <div class="col-md-8">
+              @if(Session::has('success'))
+              <div class="alert alert-success alert_success " role="alert">
+                <strong>Success: </strong>{{Session::get('success')}}
+              </div>
+              @endif
+              @if(Session::has('error'))
+              <div class="alert alert-danger alert_error " role="alert">
+                <strong>Opps! </strong>{{Session::get('error')}}
+              </div>
+              @endif
+            </div>
+            <div class="col-md-2"></div>
+          </div>
           <div class="row mb-3 {{ $errors->has('name')?'has-error':'' }}">
             <label class="col-sm-3 col-form-label col_form_label">Category Name<span class="req_star">*</span>:</label>
             <div class="col-sm-7">
-              <input type="text" class="form-control form_control" id="" name="name">
+              <input type="text" class="form-control form_control" id="" name="name" {{ old('name') }}>
               @if($errors->has('name'))
-                <span class="invalid-feedback " role="alert">
-                  <strong>{{$errors->first('name')}}</strong>
-                </span>
+              <span class="invalid-feedback " role="alert">
+                <strong>{{$errors->first('name')}}</strong>
+              </span>
               @endif
             </div>
           </div>
           <div class="row mb-3">
             <label class="col-sm-3 col-form-label col_form_label">Remarks:</label>
             <div class="col-sm-7">
-              <textarea name="remarks" id="" class="form-control form_control"  cols="30" rows="1"></textarea>
+              <textarea name="remarks" id="" class="form-control form_control" cols="30" rows="1">{{ old('remarks') }}</textarea>
             </div>
           </div>
         </div>
