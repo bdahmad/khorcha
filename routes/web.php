@@ -30,7 +30,7 @@ Route::post('/dashboard/user/delete', [UserController::class, 'delete'])->name('
 Route::get('/dashboard/income', [IncomeController::class, 'index'])->name('');
 Route::get('/dashboard/income/add', [IncomeController::class, 'add'])->name('');
 Route::get('/dashboard/income/edit', [IncomeController::class, 'edit'])->name('');
-Route::get('/dashboard/income/view', [IncomeController::class, 'view'])->name('');
+Route::get('/dashboard/income/view/{slug}', [IncomeController::class, 'view'])->name('view-in');
 Route::post('/dashboard/income/submit', [IncomeController::class, 'insert'])->name('');
 Route::post('/dashboard/income/update', [IncomeController::class, 'update'])->name('');
 Route::post('/dashboard/income/softdelete', [IncomeController::class, 'softdelete'])->name('');
@@ -40,7 +40,7 @@ Route::post('/dashboard/income/delete', [IncomeController::class, 'delete'])->na
 Route::get('/dashboard/income/category', [IncomeCategoryController::class, 'index'])->name('all-in-cate');
 Route::get('/dashboard/income/category/add', [IncomeCategoryController::class, 'add'])->name('add-in-cate');
 Route::get('/dashboard/income/category/edit', [IncomeCategoryController::class, 'edit'])->name('edit-in-cate');
-Route::get('/dashboard/income/category/view', [IncomeCategoryController::class, 'view'])->name('view-in-cate');
+Route::get('/dashboard/income/category/view/{slug}', [IncomeCategoryController::class, 'view'])->name('view-in-cate');
 Route::post('/dashboard/income/category/submit', [IncomeCategoryController::class, 'insert'])->name('insert-in-cate');
 Route::post('/dashboard/income/category/update', [IncomeCategoryController::class, 'update'])->name('update-in-cate');
 Route::post('/dashboard/income/category/softdelete', [IncomeCategoryController::class, 'softdelete'])->name('softDelete-in-cate');

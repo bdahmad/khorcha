@@ -17,7 +17,7 @@ class IncomeCategoryController extends Controller
     }
     public function index()
     {
-        $allData = IncomeCategory::all();
+        $allData = IncomeCategory::where('income_cate_status',1)->orderBy('income_cate_id','DESC')->get(); // get all data where status = 1 and desc order
         return view('admin.income.category.all',compact('allData'));
     }
     public function add()
@@ -28,10 +28,10 @@ class IncomeCategoryController extends Controller
     {
         return view('admin.income.category.edit');
     }
-    public function view()
+    public function view($slug)
     {
-        
-        return view('admin.income.category.view');
+        $viewData = IncomeCategory::where('income_cate_slug',$slug)->firstOrFail(); 
+        return view('admin.income.category.view',compact('viewData'));
     }
     public function insert(Request $request)
     {
