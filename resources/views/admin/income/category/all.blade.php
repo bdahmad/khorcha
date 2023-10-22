@@ -14,6 +14,22 @@
         </div>
       </div>
       <div class="card-body">
+        <div class="row">
+          <div class="col-md-2"></div>
+          <div class="col-md-8">
+            @if(Session::has('success'))
+            <div class="alert alert-success alert_success " role="alert">
+              <strong>Success: </strong>{{Session::get('success')}}
+            </div>
+            @endif
+            @if(Session::has('error'))
+            <div class="alert alert-danger alert_error " role="alert">
+              <strong>Opps! </strong>{{Session::get('error')}}
+            </div>
+            @endif
+          </div>
+          <div class="col-md-2"></div>
+        </div>
         <table class="table table-bordered table-striped table-hover custom_table">
           <thead class="table-dark">
             <tr>
@@ -23,9 +39,9 @@
             </tr>
           </thead>
           <tbody>
-          
-          @foreach($allData as $data)
-          <tr>
+
+            @foreach($allData as $data)
+            <tr>
               <td>{{ $data->income_cate_name }}</td>
               <td>{{ $data->income_cate_remarks }}</td>
               <td>
@@ -33,8 +49,8 @@
                   <button type="button" class="btn btn-sm btn-dark dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">Manage</button>
                   <ul class="dropdown-menu">
                     <li><a class="dropdown-item" href="{{route('view-in-cate',$data->income_cate_slug)}}">View</a></li>
-                    <li><a class="dropdown-item" href="edit-user.html">Edit</a></li>
-                    <li><a class="dropdown-item" href="#">Delete</a></li>
+                    <li><a class="dropdown-item" href="{{route('edit-in-cate',$data->income_cate_slug)}}">Edit</a></li>
+                    <li><a class="dropdown-item" href="#" id="softDelete" data-bs-toggle="modal" data-id="{{$data->income_cate_id}}" data-bs-target="#softDeleteModal">Delete</a></li>
                   </ul>
                 </div>
               </td>
@@ -51,6 +67,27 @@
         </div>
       </div>
     </div>
+  </div>
+</div>
+<!-- Modal -->
+<div class="modal fade" id="softDeleteModal" tabindex="-1" aria-labelledby="softDeleteModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <form action="{{route('softDelete-in-cate') }}" method="post">
+      @csrf
+      <div class="modal-content">
+        <div class="modal-header">
+          <h1 class="modal-title fs-5" id="softDeleteModalLabel">Confirm Message</h1>
+        </div>
+        <div class="modal-body modal_body">
+          Are you sure to delete?
+          <input type="text" name="modal_id" id="model_id">
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-sm btn-danger" data-bs-dismiss="modal">Close</button>
+          <button type="button" class="btn btn-sm btn-success">Save changes</button>
+        </div>
+      </div>
+    </form>
   </div>
 </div>
 @endsection
