@@ -9,7 +9,7 @@ setTimeout(function(){
 // modal delete 
 $(document).ready(function(){
    $(document).on("click","#softDelete",function(){
-      var deleteId = $(this).data('id');
-      $(".model_body #model_id").val(deleteId);
+      var deleteId = $(this).data('new');
+      $(".modal_body #modal_id").val(deleteId);
    });
 });

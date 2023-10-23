@@ -17,8 +17,8 @@ class IncomeCategoryController extends Controller
     }
     public function index()
     {
-        $allData = IncomeCategory::where('income_cate_status',1)->orderBy('income_cate_id','DESC')->get(); // get all data where status = 1 and desc order
-        return view('admin.income.category.all',compact('allData'));
+        $allData = IncomeCategory::where('income_cate_status', 1)->orderBy('income_cate_id', 'DESC')->get(); // get all data where status = 1 and desc order
+        return view('admin.income.category.all', compact('allData'));
     }
     public function add()
     {
@@ -26,20 +26,20 @@ class IncomeCategoryController extends Controller
     }
     public function edit($slug)
     {
-        $editData = IncomeCategory::where('income_cate_status',1)->where('income_cate_slug',$slug)->firstOrFail(); 
-        return view('admin.income.category.edit',compact('editData'));
+        $editData = IncomeCategory::where('income_cate_status', 1)->where('income_cate_slug', $slug)->firstOrFail();
+        return view('admin.income.category.edit', compact('editData'));
     }
     public function view($slug)
     {
-        $viewData = IncomeCategory::where('income_cate_slug',$slug)->firstOrFail(); 
-        return view('admin.income.category.view',compact('viewData'));
+        $viewData = IncomeCategory::where('income_cate_slug', $slug)->firstOrFail();
+        return view('admin.income.category.view', compact('viewData'));
     }
     public function insert(Request $request)
     {
-        $this->validate($request,[
-            'name'=> 'required | max:50 | unique:income_categories,income_cate_name',
-        ],[
-            'name.required'=>'Please enter income category name.',
+        $this->validate($request, [
+            'name' => 'required | max:50 | unique:income_categories,income_cate_name',
+        ], [
+            'name.required' => 'Please enter income category name.',
         ]);
         // $slug = 'IC'.uniqid(20);
         $slug = Str::slug($request['name'], '-');
@@ -53,26 +53,26 @@ class IncomeCategoryController extends Controller
             'created_at' => Carbon::now()->toDateTimeString(),
         ]);
 
-        if($insert){
-            Session::flash('success','Successfully add income category information.');
+        if ($insert) {
+            Session::flash('success', 'Successfully add income category information.');
             return redirect('dashboard/income/category/add');
-        }else{
-            Session::flash('error','Oops! Operation failed.');
+        } else {
+            Session::flash('error', 'Oops! Operation failed.');
             return redirect('dashboard/income/category/add');
         }
     }
-    public function update( Request $request)
+    public function update(Request $request)
     {
         $id = $request['id'];
-        $this->validate($request,[
-            'name'=> 'required | max:50 | unique:income_categories,income_cate_name,'.$id.',income_cate_id',
-        ],[
-            'name.required'=>'Please enter income category name.',
+        $this->validate($request, [
+            'name' => 'required | max:50 | unique:income_categories,income_cate_name,' . $id . ',income_cate_id',
+        ], [
+            'name.required' => 'Please enter income category name.',
         ]);
         // $slug = 'IC'.uniqid(20);
         $slug = Str::slug($request['name'], '-');
         $editor = Auth::user()->id;
-        $update = IncomeCategory::where('income_cate_status',1)->where('income_cate_id',$id)->update([
+        $update = IncomeCategory::where('income_cate_status', 1)->where('income_cate_id', $id)->update([
             'income_cate_name' => $request['name'],
             'income_cate_remarks' => $request['remarks'],
             'income_cate_slug' => $slug,
@@ -81,30 +81,30 @@ class IncomeCategoryController extends Controller
             'updated_at' => Carbon::now()->toDateTimeString(),
         ]);
 
-        if($update){
-            Session::flash('success','Successfully update income category information.');
-            return redirect('dashboard/income/category/view/'.$slug);
-        }else{
-            Session::flash('error','Oops! Operation failed.');
-            return redirect('dashboard/income/category/edit/'.$slug);
+        if ($update) {
+            Session::flash('success', 'Successfully update income category information.');
+            return redirect('dashboard/income/category/view/' . $slug);
+        } else {
+            Session::flash('error', 'Oops! Operation failed.');
+            return redirect('dashboard/income/category/edit/' . $slug);
         }
     }
     public function delete()
     {
     }
-    public function softDelete($id)
+    public function softDelete(Request $request)
     {
-        $soft = IncomeCategory::where('income_cate_status',1)->where('income_cate_id',$id)->update([
+        $id = $request['modal_id'];
+        $soft = IncomeCategory::where('income_cate_status', 1)->where('income_cate_id', $id)->update([
             'income_cate_status' => 0,
-
             'updated_at' => Carbon::now()->toDateTimeString(),
         ]);
 
-        if($soft){
-            Session::flash('success','Successfully update income category information.');
+        if ($soft) {
+            Session::flash('success', 'Successfully update income category information.');
             return redirect('dashboard/income/category');
-        }else{
-            Session::flash('error','Oops! Operation failed.');
+        } else {
+            Session::flash('error', 'Oops! Operation failed.');
             return redirect('dashboard/income/category');
         }
     }

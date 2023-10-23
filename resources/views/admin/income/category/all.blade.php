@@ -50,7 +50,7 @@
                   <ul class="dropdown-menu">
                     <li><a class="dropdown-item" href="{{route('view-in-cate',$data->income_cate_slug)}}">View</a></li>
                     <li><a class="dropdown-item" href="{{route('edit-in-cate',$data->income_cate_slug)}}">Edit</a></li>
-                    <li><a class="dropdown-item" href="#" id="softDelete" data-bs-toggle="modal" data-id="{{$data->income_cate_id}}" data-bs-target="#softDeleteModal">Delete</a></li>
+                    <li><a class="dropdown-item" href="#" id="softDelete" data-bs-toggle="modal" data-new="{{$data->income_cate_id}}" data-bs-target="#softDeleteModal">Delete</a></li>
                   </ul>
                 </div>
               </td>
@@ -80,11 +80,11 @@
         </div>
         <div class="modal-body modal_body">
           Are you sure to delete?
-          <input type="text" name="modal_id" id="model_id">
+          <input type="hidden" name="modal_id" id="modal_id">
         </div>
         <div class="modal-footer">
           <button type="button" class="btn btn-sm btn-danger" data-bs-dismiss="modal">Close</button>
-          <button type="button" class="btn btn-sm btn-success">Save changes</button>
+          <button type="submit" class="btn btn-sm btn-success">Confirm</button>
         </div>
       </div>
     </form>
