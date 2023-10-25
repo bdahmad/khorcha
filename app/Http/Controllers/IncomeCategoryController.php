@@ -89,9 +89,6 @@ class IncomeCategoryController extends Controller
             return redirect('dashboard/income/category/edit/' . $slug);
         }
     }
-    public function delete()
-    {
-    }
     public function softDelete(Request $request)
     {
         $id = $request['modal_id'];
@@ -99,16 +96,42 @@ class IncomeCategoryController extends Controller
             'income_cate_status' => 0,
             'updated_at' => Carbon::now()->toDateTimeString(),
         ]);
-
+        
         if ($soft) {
-            Session::flash('success', 'Successfully update income category information.');
+            Session::flash('success', 'Successfully delete income category information.');
             return redirect('dashboard/income/category');
         } else {
             Session::flash('error', 'Oops! Operation failed.');
             return redirect('dashboard/income/category');
         }
     }
-    public function restore()
+    public function restore(Request $request)
     {
+        $id = $request['restore_id'];
+        $restore = IncomeCategory::where('income_cate_status', 0)->where('income_cate_id', $id)->update([
+            'income_cate_status' => 1,
+            'updated_at' => Carbon::now()->toDateTimeString(),
+        ]);
+        
+        if ($restore) {
+            Session::flash('success', 'Successfully restore income category information.');
+            return redirect('dashboard/recycle/income/category');
+        } else {
+            Session::flash('error', 'Oops! Operation failed.');
+            return redirect('dashboard/recycle/income/category');
+        }
+    }
+    public function delete(Request $request)
+    {
+        $id = $request['delete_id'];
+        $delete = IncomeCategory::where('income_cate_status', 0)->where('income_cate_id', $id)->delete([]);
+        
+        if ($delete) {
+            Session::flash('success', 'Successfully parmanently delete income category information.');
+            return redirect('dashboard/recycle/income/category');
+        } else {
+            Session::flash('error', 'Oops! Operation failed.');
+            return redirect('dashboard/recycle/income/category');
+        }
     }
 }

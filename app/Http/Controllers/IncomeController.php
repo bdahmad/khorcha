@@ -11,13 +11,15 @@ class IncomeController extends Controller
         $this->middleware('auth');
     }
     public function index(){
-
+        return view('admin.income.main.all');
     }
     public function add(){
+        return view('admin.income.main.add');
         
     }public function edit(){
         
     }public function view(){
+        return view('admin.income.main.view');
         
     }public function insert(){
         

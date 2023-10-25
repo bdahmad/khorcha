@@ -30,15 +30,15 @@ Route::post('/dashboard/user/softdelete', [UserController::class, 'softdelete'])
 Route::post('/dashboard/user/restore', [UserController::class, 'restore'])->name('');
 Route::post('/dashboard/user/delete', [UserController::class, 'delete'])->name('');
 
-Route::get('/dashboard/income', [IncomeController::class, 'index'])->name('');
-Route::get('/dashboard/income/add', [IncomeController::class, 'add'])->name('');
-Route::get('/dashboard/income/edit/{slug}', [IncomeController::class, 'edit'])->name('');
-Route::get('/dashboard/income/view/{slug}', [IncomeController::class, 'view'])->name('view-in');
-Route::post('/dashboard/income/submit', [IncomeController::class, 'insert'])->name('');
-Route::post('/dashboard/income/update', [IncomeController::class, 'update'])->name('');
-Route::post('/dashboard/income/softdelete', [IncomeController::class, 'softdelete'])->name('');
-Route::post('/dashboard/income/restore', [IncomeController::class, 'restore'])->name('');
-Route::post('/dashboard/income/delete', [IncomeController::class, 'delete'])->name('');
+Route::get('/dashboard/income', [IncomeController::class, 'index'])->name('all-income');
+Route::get('/dashboard/income/add', [IncomeController::class, 'add'])->name('add-income');
+Route::get('/dashboard/income/edit/{slug}', [IncomeController::class, 'edit'])->name('edit-income');
+Route::get('/dashboard/income/view/{slug}', [IncomeController::class, 'view'])->name('view-income');
+Route::post('/dashboard/income/submit', [IncomeController::class, 'insert'])->name('insert-income');
+Route::post('/dashboard/income/update', [IncomeController::class, 'update'])->name('update-income');
+Route::post('/dashboard/income/softdelete', [IncomeController::class, 'softdelete'])->name('softDelete-income');
+Route::post('/dashboard/income/restore', [IncomeController::class, 'restore'])->name('restore-income');
+Route::post('/dashboard/income/delete', [IncomeController::class, 'delete'])->name('delete-income');
 
 Route::get('/dashboard/income/category', [IncomeCategoryController::class, 'index'])->name('all-in-cate');
 Route::get('/dashboard/income/category/add', [IncomeCategoryController::class, 'add'])->name('add-in-cate');
@@ -70,7 +70,10 @@ Route::post('/dashboard/expense/category/softdelete', [ExpenseCategoryController
 Route::post('/dashboard/expense/category/restore', [ExpenseCategoryController::class, 'restore'])->name('');
 Route::post('/dashboard/expense/category/delete', [ExpenseCategoryController::class, 'delete'])->name('');
 
-Route::get('/dashboard/recycle/', [RecycleController::class, 'index'])->name('');
+Route::get('/dashboard/recycle/', [RecycleController::class, 'index'])->name('recycleBin');
+Route::get('/dashboard/recycle/user', [RecycleController::class, 'user'])->name('');
+Route::get('/dashboard/recycle/income', [RecycleController::class, 'income'])->name('');
+Route::get('/dashboard/recycle/income/category', [RecycleController::class, 'incomeCategory'])->name('');
 
 Route::get('/dashboard/report/', [ReportController::class, 'index'])->name('');
 
