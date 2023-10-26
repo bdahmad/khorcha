@@ -25,10 +25,10 @@ $(document).ready(function(){
    });
 
    //datatable from bootstrap
-   $('#myTable').DataTable();
+
    $('#allTableInfo').DataTable({
       "paging":true,
-      "lengthChange":false,
+      "lengthChange":true,
       "searching":true,
       "ordering":false,
       "info":true,

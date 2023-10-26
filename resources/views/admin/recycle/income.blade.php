@@ -1,15 +1,18 @@
 @extends('layouts/admin')
 @section('content')
+@php 
+   $all = App\Models\Income::where('income_status',0)->orderBy('income_id','DESC')->get();
+@endphp
 <div class="row">
   <div class="col-md-12">
     <div class="card mb-3">
       <div class="card-header">
         <div class="row">
           <div class="col-md-8 card_title_part">
-            <i class="fab fa-gg-circle"></i>All Income Category Information
+            <i class="fab fa-gg-circle"></i>Recycle Income Category Information
           </div>
           <div class="col-md-4 card_button_part">
-            <a href="{{route('add-in-cate')}}" class="btn btn-sm btn-dark"><i class="fas fa-plus-circle"></i>Add Category</a>
+            <a href="{{route('recycleBin')}}" class="btn btn-sm btn-dark"><i class="fas fa-th"></i>Recycle Bin</a>
           </div>
         </div>
       </div>
@@ -30,7 +33,7 @@
           </div>
           <div class="col-md-2"></div>
         </div>
-        <table id="allTableInfo"  class="table table-bordered table-striped table-hover custom_table">
+        <table id="allTableInfo" class="table table-bordered table-striped table-hover custom_table">
           <thead class="table-dark">
             <tr>
               <th>Date</th>
@@ -42,21 +45,18 @@
           </thead>
           <tbody>
 
-            @foreach($allData as $data)
+            @foreach($all as $data)
             <tr>
-              <td>{{ date('d-m-Y',strtotime($data->income_date))  }}</td>
+              <td>{{ $data->income_date }}</td>
               <td>{{ $data->income_title }}</td>
               <td>{{ $data->categoryInfo->income_cate_name }}</td>
-              <td>{{ number_format($data->income_amount,2)  }}</td>
+              <td>{{ $data->income_amount }}</td>
               <td>
-                <div class="btn-group btn_group_manage" role="group">
-                  <button type="button" class="btn btn-sm btn-dark dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">Manage</button>
-                  <ul class="dropdown-menu">
-                    <li><a class="dropdown-item" href="{{route('view-income',$data->income_slug)}}">View</a></li>
-                    <li><a class="dropdown-item" href="{{route('edit-income',$data->income_slug)}}">Edit</a></li>
-                    <li><a class="dropdown-item" href="#" id="softDelete" data-bs-toggle="modal" data-new="{{$data->income_id}}" data-bs-target="#softDeleteModal">Delete</a></li>
-                  </ul>
-                </div>
+                
+                  <a href="#" class="fs-5" id="restore" data-bs-toggle="modal" data-new="{{$data->income_id}}" data-bs-target="#restoreModal"><i class="fas fa-recycle mx-2 text-success"></i>  </a> 
+
+                  <a href="#" class="fs-5"  id="delete" data-bs-toggle="modal" data-new="{{$data->income_id}}" data-bs-target="#deleteModal"><i class="fas fa-trash text-danger"></i></a>
+                  
               </td>
             </tr>
             @endforeach
@@ -73,18 +73,39 @@
     </div>
   </div>
 </div>
-<!-- Modal -->
-<div class="modal fade" id="softDeleteModal" tabindex="-1" aria-labelledby="softDeleteModalLabel" aria-hidden="true">
+<!--restore Modal -->
+<div class="modal fade" id="restoreModal" tabindex="-1" aria-labelledby="restoreModalLabel" aria-hidden="true">
+   <div class="modal-dialog">
+      <form action="{{route('restore-income') }}" method="post">
+         @csrf
+         <div class="modal-content">
+            <div class="modal-header">
+               <h1 class="modal-title fs-5" id="restoreModalLabel">Confirm Message</h1>
+            </div>
+            <div class="modal-body restore_body">
+               Are you sure to restore data?
+               <input type="hidden" name="restore_id" id="restore_id">
+            </div>
+            <div class="modal-footer">
+               <button type="button" class="btn btn-sm btn-danger" data-bs-dismiss="modal">Close</button>
+               <button type="submit" class="btn btn-sm btn-success">Confirm</button>
+            </div>
+         </div>
+      </form>
+   </div>
+</div>
+<!--delete Modal -->
+<div class="modal fade" id="deleteModal" tabindex="-1" aria-labelledby="deleteModalLabel" aria-hidden="true">
   <div class="modal-dialog">
-    <form action="{{route('softDelete-income') }}" method="post">
+    <form action="{{route('delete-income') }}" method="post">
       @csrf
       <div class="modal-content">
         <div class="modal-header">
-          <h1 class="modal-title fs-5" id="softDeleteModalLabel">Confirm Message</h1>
+          <h1 class="modal-title fs-5" id="deleteModalLabel">Confirm Message</h1>
         </div>
-        <div class="modal-body modal_body">
-          Are you sure to delete?
-          <input type="hidden" name="modal_id" id="modal_id">
+        <div class="modal-body delete_body">
+          Are you sure to delete permanently?
+          <input type="hidden" name="delete_id" id="delete_id">
         </div>
         <div class="modal-footer">
           <button type="button" class="btn btn-sm btn-danger" data-bs-dismiss="modal">Close</button>
