@@ -62,8 +62,8 @@ Route::post('/dashboard/expense/delete', [ExpenseController::class, 'delete'])->
 
 Route::get('/dashboard/expense/category/', [ExpenseCategoryController::class, 'index'])->name('all-ex-cate');
 Route::get('/dashboard/expense/category/add', [ExpenseCategoryController::class, 'add'])->name('add-ex-cate');
-Route::get('/dashboard/expense/category/edit', [ExpenseCategoryController::class, 'edit'])->name('edit-ex-cate');
-Route::get('/dashboard/expense/category/view', [ExpenseCategoryController::class, 'view'])->name('view-ex-cate');
+Route::get('/dashboard/expense/category/edit/{slug}', [ExpenseCategoryController::class, 'edit'])->name('edit-ex-cate');
+Route::get('/dashboard/expense/category/view/{slug}', [ExpenseCategoryController::class, 'view'])->name('view-ex-cate');
 Route::post('/dashboard/expense/category/submit', [ExpenseCategoryController::class, 'insert'])->name('insert-ex-cate');
 Route::post('/dashboard/expense/category/update', [ExpenseCategoryController::class, 'update'])->name('update-ex-cate');
 Route::post('/dashboard/expense/category/softdelete', [ExpenseCategoryController::class, 'softdelete'])->name('softDelete-ex-cate');

@@ -6,10 +6,10 @@
       <div class="card-header">
         <div class="row">
           <div class="col-md-8 card_title_part">
-            <i class="fab fa-gg-circle"></i>View Income Category Information
+            <i class="fab fa-gg-circle"></i>View expense Category Information
           </div>
           <div class="col-md-4 card_button_part">
-            <a href="{{route('all-in-cate')}}" class="btn btn-sm btn-dark"><i class="fas fa-th"></i>All Category</a>
+            <a href="{{route('all-ex-cate')}}" class="btn btn-sm btn-dark"><i class="fas fa-th"></i>All Category</a>
           </div>
         </div>
       </div>
@@ -35,37 +35,37 @@
           <div class="col-md-8">
             <table class="table table-bordered table-striped table-hover custom_view_table">
               <tr>
-                <td>Income Category Name</td>
+                <td>Expense Category Name</td>
                 <td>:</td>
-                <td>{{$viewData->income_cate_name }}</td>
+                <td>{{$viewData->expense_cate_name }}</td>
               </tr>
               <tr>
                 <td>Remarks</td>
                 <td>:</td>
-                <td>{{$viewData->income_cate_remarks }}</td>
+                <td>{{$viewData->expense_cate_remarks }}</td>
               </tr>
               <tr>
                 <td>Creator</td>
                 <td>:</td>
-                <td>{{$viewData->creatorInfo->name }}</td>
+                <td>
+                  {{$viewData->creatorInfo->name }}
+                  <br>
+                  {{$viewData->created_at->format('d-M-Y | h:m:s A') }}
+                  <br>
+                  {{$viewData->created_at->diffForHumans() }}
+                </td>
               </tr>
-              <tr>
-                <td>Created At</td>
-                <td>:</td>
-                <td>{{$viewData->created_at->format('d-M-Y | h:m:s A') }}</td>
-              </tr>
-              @if($viewData->income_cate_editor != '')
+              @if($viewData->expense_cate_editor != '')
               <tr>
                 <td>Editor</td>
                 <td>:</td>
-                <td>{{$viewData->editorInfo->name }}</td>
-              </tr>
-              @endif
-              @if($viewData->updated_at != '')
-              <tr>
-                <td>Updated At</td>
-                <td>:</td>
-                <td>{{$viewData->updated_at->format('d-M-Y | h:m:s A ') }}</td>
+                <td>
+                  {{$viewData->editorInfo->name }}
+                  <br>
+                  {{$viewData->updated_at->format('d-M-Y | h:m:s A ') }}
+                  <br>
+                  {{$viewData->updated_at->diffForHumans() }}
+                </td>
               </tr>
               @endif
             </table>

@@ -2,16 +2,16 @@
 @section('content')
 <div class="row">
   <div class="col-md-12 ">
-    <form method="post" action="{{ route('insert-in-cate') }}">
+    <form method="post" action="{{ route('insert-ex-cate') }}">
       @csrf
       <div class="card mb-3">
         <div class="card-header">
           <div class="row">
             <div class="col-md-8 card_title_part">
-              <i class="fab fa-gg-circle"></i>add income category Information
+              <i class="fab fa-gg-circle"></i>add expense category Information
             </div>
             <div class="col-md-4 card_button_part">
-              <a href="{{route('all-in-cate') }}" class="btn btn-sm btn-dark"><i class="fas fa-th"></i>All category</a>
+              <a href="{{route('all-ex-cate') }}" class="btn btn-sm btn-dark"><i class="fas fa-th"></i>All category</a>
             </div>
           </div>
         </div>

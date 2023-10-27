@@ -6,10 +6,10 @@
       <div class="card-header">
         <div class="row">
           <div class="col-md-8 card_title_part">
-            <i class="fab fa-gg-circle"></i>All Income Category Information
+            <i class="fab fa-gg-circle"></i>All Expense Category Information
           </div>
           <div class="col-md-4 card_button_part">
-            <a href="{{route('add-in-cate')}}" class="btn btn-sm btn-dark"><i class="fas fa-plus-circle"></i>Add Category</a>
+            <a href="{{route('add-ex-cate')}}" class="btn btn-sm btn-dark"><i class="fas fa-plus-circle"></i>Add Category</a>
           </div>
         </div>
       </div>
@@ -30,7 +30,7 @@
           </div>
           <div class="col-md-2"></div>
         </div>
-        <table class="table table-bordered table-striped table-hover custom_table">
+        <table id="allTableInfo" class="table table-bordered table-striped table-hover custom_table">
           <thead class="table-dark">
             <tr>
               <th>Name</th>
@@ -42,15 +42,15 @@
 
             @foreach($allData as $data)
             <tr>
-              <td>{{ $data->income_cate_name }}</td>
-              <td>{{ $data->income_cate_remarks }}</td>
+              <td>{{ $data->expense_cate_name }}</td>
+              <td>{{ $data->expense_cate_remarks }}</td>
               <td>
                 <div class="btn-group btn_group_manage" role="group">
                   <button type="button" class="btn btn-sm btn-dark dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">Manage</button>
                   <ul class="dropdown-menu">
-                    <li><a class="dropdown-item" href="{{route('view-in-cate',$data->income_cate_slug)}}">View</a></li>
-                    <li><a class="dropdown-item" href="{{route('edit-in-cate',$data->income_cate_slug)}}">Edit</a></li>
-                    <li><a class="dropdown-item" href="#" id="softDelete" data-bs-toggle="modal" data-new="{{$data->income_cate_id}}" data-bs-target="#softDeleteModal">Delete</a></li>
+                    <li><a class="dropdown-item" href="{{route('view-ex-cate',$data->expense_cate_slug)}}">View</a></li>
+                    <li><a class="dropdown-item" href="{{route('edit-ex-cate',$data->expense_cate_slug)}}">Edit</a></li>
+                    <li><a class="dropdown-item" href="#" id="softDelete" data-bs-toggle="modal" data-new="{{$data->expense_cate_id}}" data-bs-target="#softDeleteModal">Delete</a></li>
                   </ul>
                 </div>
               </td>
@@ -72,7 +72,7 @@
 <!-- Modal -->
 <div class="modal fade" id="softDeleteModal" tabindex="-1" aria-labelledby="softDeleteModalLabel" aria-hidden="true">
   <div class="modal-dialog">
-    <form action="{{route('softDelete-in-cate') }}" method="post">
+    <form action="{{route('softDelete-ex-cate') }}" method="post">
       @csrf
       <div class="modal-content">
         <div class="modal-header">
