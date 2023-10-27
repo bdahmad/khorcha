@@ -1,7 +1,7 @@
 @extends('layouts/admin')
 @section('content')
-@php 
-   $all = App\Models\IncomeCategory::where('income_cate_status',0)->orderBy('income_cate_id','DESC')->get();
+@php
+$all = App\Models\ExpenseCategory::where('expense_cate_status',0)->orderBy('expense_cate_id','DESC')->get();
 @endphp
 <div class="row">
   <div class="col-md-12">
@@ -9,7 +9,7 @@
       <div class="card-header">
         <div class="row">
           <div class="col-md-8 card_title_part">
-            <i class="fab fa-gg-circle"></i>Recycle Income Category Information
+            <i class="fab fa-gg-circle"></i>Recycle Expense Category Information
           </div>
           <div class="col-md-4 card_button_part">
             <a href="{{route('recycleBin')}}" class="btn btn-sm btn-dark"><i class="fas fa-th"></i>Recycle Bin</a>
@@ -45,14 +45,14 @@
 
             @foreach($all as $data)
             <tr>
-              <td>{{ $data->income_cate_name }}</td>
-              <td>{{ $data->income_cate_remarks }}</td>
+              <td>{{ $data->expense_cate_name }}</td>
+              <td>{{ $data->expense_cate_remarks }}</td>
               <td>
-                
-                  <a href="#" class="fs-5" id="restore" data-bs-toggle="modal" data-new="{{$data->income_cate_id}}" data-bs-target="#restoreModal"><i class="fas fa-recycle mx-2 text-success"></i>  </a> 
 
-                  <a href="#" class="fs-5"  id="delete" data-bs-toggle="modal" data-new="{{$data->income_cate_id}}" data-bs-target="#deleteModal"><i class="fas fa-trash text-danger"></i></a>
-                  
+                <a href="#" class="fs-5" id="restore" data-bs-toggle="modal" data-new="{{$data->expense_cate_id}}" data-bs-target="#restoreModal"><i class="fas fa-recycle mx-2 text-success"></i> </a>
+
+                <a href="#" class="fs-5" id="delete" data-bs-toggle="modal" data-new="{{$data->expense_cate_id}}" data-bs-target="#deleteModal"><i class="fas fa-trash text-danger"></i></a>
+
               </td>
             </tr>
             @endforeach
@@ -71,29 +71,29 @@
 </div>
 <!--restore Modal -->
 <div class="modal fade" id="restoreModal" tabindex="-1" aria-labelledby="restoreModalLabel" aria-hidden="true">
-   <div class="modal-dialog">
-      <form action="{{route('restore-in-cate') }}" method="post">
-         @csrf
-         <div class="modal-content">
-            <div class="modal-header">
-               <h1 class="modal-title fs-5" id="restoreModalLabel">Confirm Message</h1>
-            </div>
-            <div class="modal-body restore_body">
-               Are you sure to restore data?
-               <input type="hidden" name="restore_id" id="restore_id">
-            </div>
-            <div class="modal-footer">
-               <button type="button" class="btn btn-sm btn-danger" data-bs-dismiss="modal">Close</button>
-               <button type="submit" class="btn btn-sm btn-success">Confirm</button>
-            </div>
-         </div>
-      </form>
-   </div>
+  <div class="modal-dialog">
+    <form action="{{route('restore-ex-cate') }}" method="post">
+      @csrf
+      <div class="modal-content">
+        <div class="modal-header">
+          <h1 class="modal-title fs-5" id="restoreModalLabel">Confirm Message</h1>
+        </div>
+        <div class="modal-body restore_body">
+          Are you sure to restore data?
+          <input type="hidden" name="restore_id" id="restore_id">
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-sm btn-danger" data-bs-dismiss="modal">Close</button>
+          <button type="submit" class="btn btn-sm btn-success">Confirm</button>
+        </div>
+      </div>
+    </form>
+  </div>
 </div>
 <!--delete Modal -->
 <div class="modal fade" id="deleteModal" tabindex="-1" aria-labelledby="deleteModalLabel" aria-hidden="true">
   <div class="modal-dialog">
-    <form action="{{route('delete-in-cate') }}" method="post">
+    <form action="{{route('delete-ex-cate') }}" method="post">
       @csrf
       <div class="modal-content">
         <div class="modal-header">

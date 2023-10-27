@@ -74,6 +74,7 @@ Route::get('/dashboard/recycle/', [RecycleController::class, 'index'])->name('re
 Route::get('/dashboard/recycle/user', [RecycleController::class, 'user'])->name('');
 Route::get('/dashboard/recycle/income', [RecycleController::class, 'income'])->name('');
 Route::get('/dashboard/recycle/income/category', [RecycleController::class, 'incomeCategory'])->name('');
+Route::get('/dashboard/recycle/expense/category', [RecycleController::class, 'expenseCategory'])->name('');
 
 Route::get('/dashboard/report/', [ReportController::class, 'index'])->name('');
 

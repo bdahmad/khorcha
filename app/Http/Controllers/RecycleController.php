@@ -15,22 +15,26 @@ class RecycleController extends Controller
     {
         $this->middleware('auth');
     }
-    
-    public function index(){
-    }
-    public function user(){
 
+    public function index()
+    {
     }
-    public function income(){
+    public function user()
+    {
+    }
+    public function income()
+    {
         return view('admin.recycle.income');
     }
-    public function incomeCategory(){
+    public function incomeCategory()
+    {
         return view('admin.recycle.income-category');
     }
-    public function expense(){
-
+    public function expense()
+    {
     }
-    public function expense_categories(){
-
+    public function expenseCategory()
+    {
+        return view('admin.recycle.expense-category');
     }
 }
