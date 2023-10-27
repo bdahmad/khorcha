@@ -50,25 +50,25 @@ Route::post('/dashboard/income/category/softdelete', [IncomeCategoryController::
 Route::post('/dashboard/income/category/restore', [IncomeCategoryController::class, 'restore'])->name('restore-in-cate');
 Route::post('/dashboard/income/category/delete', [IncomeCategoryController::class, 'delete'])->name('delete-in-cate');
 
-Route::get('/dashboard/expense/', [ExpenseController::class, 'index'])->name('');
-Route::get('/dashboard/expense/add', [ExpenseController::class, 'add'])->name('');
-Route::get('/dashboard/expense/edit', [ExpenseController::class, 'edit'])->name('');
-Route::get('/dashboard/expense/view', [ExpenseController::class, 'view'])->name('');
-Route::post('/dashboard/expense/submit', [ExpenseController::class, 'insert'])->name('');
-Route::post('/dashboard/expense/update', [ExpenseController::class, 'update'])->name('');
-Route::post('/dashboard/expense/softdelete', [ExpenseController::class, 'softdelete'])->name('');
-Route::post('/dashboard/expense/restore', [ExpenseController::class, 'restore'])->name('');
-Route::post('/dashboard/expense/delete', [ExpenseController::class, 'delete'])->name('');
+Route::get('/dashboard/expense/', [ExpenseController::class, 'index'])->name('all-expense');
+Route::get('/dashboard/expense/add', [ExpenseController::class, 'add'])->name('add-expense');
+Route::get('/dashboard/expense/edit', [ExpenseController::class, 'edit'])->name('edit-expense');
+Route::get('/dashboard/expense/view', [ExpenseController::class, 'view'])->name('view-expense');
+Route::post('/dashboard/expense/submit', [ExpenseController::class, 'insert'])->name('insert-expense');
+Route::post('/dashboard/expense/update', [ExpenseController::class, 'update'])->name('update-expense');
+Route::post('/dashboard/expense/softdelete', [ExpenseController::class, 'softdelete'])->name('softDelete-expense');
+Route::post('/dashboard/expense/restore', [ExpenseController::class, 'restore'])->name('restore-expense');
+Route::post('/dashboard/expense/delete', [ExpenseController::class, 'delete'])->name('delete-expense');
 
-Route::get('/dashboard/expense/category/', [ExpenseCategoryController::class, 'index'])->name('');
-Route::get('/dashboard/expense/category/add', [ExpenseCategoryController::class, 'add'])->name('');
-Route::get('/dashboard/expense/category/edit', [ExpenseCategoryController::class, 'edit'])->name('');
-Route::get('/dashboard/expense/category/view', [ExpenseCategoryController::class, 'view'])->name('');
-Route::post('/dashboard/expense/category/submit', [ExpenseCategoryController::class, 'insert'])->name('');
-Route::post('/dashboard/expense/category/update', [ExpenseCategoryController::class, 'update'])->name('');
-Route::post('/dashboard/expense/category/softdelete', [ExpenseCategoryController::class, 'softdelete'])->name('');
-Route::post('/dashboard/expense/category/restore', [ExpenseCategoryController::class, 'restore'])->name('');
-Route::post('/dashboard/expense/category/delete', [ExpenseCategoryController::class, 'delete'])->name('');
+Route::get('/dashboard/expense/category/', [ExpenseCategoryController::class, 'index'])->name('all-ex-cate');
+Route::get('/dashboard/expense/category/add', [ExpenseCategoryController::class, 'add'])->name('add-ex-cate');
+Route::get('/dashboard/expense/category/edit', [ExpenseCategoryController::class, 'edit'])->name('edit-ex-cate');
+Route::get('/dashboard/expense/category/view', [ExpenseCategoryController::class, 'view'])->name('view-ex-cate');
+Route::post('/dashboard/expense/category/submit', [ExpenseCategoryController::class, 'insert'])->name('insert-ex-cate');
+Route::post('/dashboard/expense/category/update', [ExpenseCategoryController::class, 'update'])->name('update-ex-cate');
+Route::post('/dashboard/expense/category/softdelete', [ExpenseCategoryController::class, 'softdelete'])->name('softDelete-ex-cate');
+Route::post('/dashboard/expense/category/restore', [ExpenseCategoryController::class, 'restore'])->name('restore-ex-cate');
+Route::post('/dashboard/expense/category/delete', [ExpenseCategoryController::class, 'delete'])->name('delete-ex-cate');
 
 Route::get('/dashboard/recycle/', [RecycleController::class, 'index'])->name('recycleBin');
 Route::get('/dashboard/recycle/user', [RecycleController::class, 'user'])->name('');

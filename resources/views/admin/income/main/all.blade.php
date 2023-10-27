@@ -6,10 +6,10 @@
       <div class="card-header">
         <div class="row">
           <div class="col-md-8 card_title_part">
-            <i class="fab fa-gg-circle"></i>All Income Category Information
+            <i class="fab fa-gg-circle"></i>All Income Information
           </div>
           <div class="col-md-4 card_button_part">
-            <a href="{{route('add-in-cate')}}" class="btn btn-sm btn-dark"><i class="fas fa-plus-circle"></i>Add Category</a>
+            <a href="{{route('add-income')}}" class="btn btn-sm btn-dark"><i class="fas fa-plus-circle"></i>Add Income</a>
           </div>
         </div>
       </div>
