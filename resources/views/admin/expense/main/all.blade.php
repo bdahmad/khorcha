@@ -3,13 +3,13 @@
 <div class="row">
   <div class="col-md-12">
     <div class="card mb-3">
-      <div class="card-header">
+      <div class="card-header"> 
         <div class="row">
           <div class="col-md-8 card_title_part">
-            <i class="fab fa-gg-circle"></i>All Income Information
+            <i class="fab fa-gg-circle"></i>All expense Information
           </div>
           <div class="col-md-4 card_button_part">
-            <a href="{{route('add-income')}}" class="btn btn-sm btn-dark"><i class="fas fa-plus-circle"></i>Add Income</a>
+            <a href="{{route('add-expense')}}" class="btn btn-sm btn-dark"><i class="fas fa-plus-circle"></i>Add expense</a>
           </div>
         </div>
       </div>
@@ -44,17 +44,17 @@
 
             @foreach($allData as $data)
             <tr>
-              <td>{{ date('d-m-Y',strtotime($data->income_date))  }}</td>
-              <td>{{ $data->income_title }}</td>
-              <td>{{ $data->categoryInfo->income_cate_name }}</td>
-              <td>{{ number_format($data->income_amount,2)  }}</td>
+              <td>{{ date('d-m-Y',strtotime($data->expense_date))  }}</td>
+              <td>{{ $data->expense_title }}</td>
+              <td>{{ $data->categoryInfo->expense_cate_name }}</td>
+              <td>{{ number_format($data->expense_amount,2)  }}</td>
               <td>
                 <div class="btn-group btn_group_manage" role="group">
                   <button type="button" class="btn btn-sm btn-dark dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">Manage</button>
                   <ul class="dropdown-menu">
-                    <li><a class="dropdown-item" href="{{route('view-income',$data->income_slug)}}">View</a></li>
-                    <li><a class="dropdown-item" href="{{route('edit-income',$data->income_slug)}}">Edit</a></li>
-                    <li><a class="dropdown-item" href="#" id="softDelete" data-bs-toggle="modal" data-new="{{$data->income_id}}" data-bs-target="#softDeleteModal">Delete</a></li>
+                    <li><a class="dropdown-item" href="{{route('view-expense',$data->expense_slug)}}">View</a></li>
+                    <li><a class="dropdown-item" href="{{route('edit-expense',$data->expense_slug)}}">Edit</a></li>
+                    <li><a class="dropdown-item" href="#" id="softDelete" data-bs-toggle="modal" data-new="{{$data->expense_id}}" data-bs-target="#softDeleteModal">Delete</a></li>
                   </ul>
                 </div>
               </td>
@@ -76,7 +76,7 @@
 <!-- Modal -->
 <div class="modal fade" id="softDeleteModal" tabindex="-1" aria-labelledby="softDeleteModalLabel" aria-hidden="true">
   <div class="modal-dialog">
-    <form action="{{route('softDelete-income') }}" method="post">
+    <form action="{{route('softDelete-expense') }}" method="post">
       @csrf
       <div class="modal-content">
         <div class="modal-header">

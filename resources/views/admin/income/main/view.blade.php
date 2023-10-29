@@ -54,7 +54,7 @@
                 <td>:</td>
                 <td>
                   {{$viewData->creatorInfo->name }} <br>
-                  {{$viewData->created_at->format('d-M-Y | h:m:s A ') }}
+                  {{$viewData->created_at->format('d-M-Y | h:i:s A ') }}
                 </td>
               </tr>
               @if($viewData->income_editor != '')
@@ -62,7 +62,7 @@
                 <td>Editor</td>
                 <td>:</td>
                 <td>{{$viewData->editorInfo->name }} <br>
-                  {{$viewData->updated_at->format('d-M-Y | h:m:s A ') }}
+                  {{$viewData->updated_at->format('d-M-Y | h:i:s A ') }}
                 </td>
               </tr>
               @endif

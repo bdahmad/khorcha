@@ -6,10 +6,10 @@
       <div class="card-header">
         <div class="row">
           <div class="col-md-8 card_title_part">
-            <i class="fab fa-gg-circle"></i>View Income Category Information
+            <i class="fab fa-gg-circle"></i>View expense Category Information
           </div>
           <div class="col-md-4 card_button_part">
-            <a href="{{route('all-income')}}" class="btn btn-sm btn-dark"><i class="fas fa-th"></i>All Income</a>
+            <a href="{{route('all-expense')}}" class="btn btn-sm btn-dark"><i class="fas fa-th"></i>All expense</a>
           </div>
         </div>
       </div>
@@ -35,34 +35,34 @@
           <div class="col-md-8">
             <table class="table table-bordered table-striped table-hover custom_view_table">
               <tr>
-                <td>Income Title</td>
+                <td>expense Title</td>
                 <td>:</td>
-                <td>{{$viewData->income_title }}</td>
+                <td>{{$viewData->expense_title }}</td>
               </tr>
               <tr>
-                <td>Income Category</td>
+                <td>expense Category</td>
                 <td>:</td>
-                <td>{{$viewData->categoryInfo->income_cate_name }}</td>
+                <td>{{$viewData->categoryInfo->expense_cate_name }}</td>
               </tr>
               <tr>
-                <td>Income Date</td>
+                <td>expense Date</td>
                 <td>:</td>
-                <td>{{$viewData->income_date }}</td>
+                <td>{{$viewData->expense_date }}</td>
               </tr>
               <tr>
-                <td>Creator</td>
+                <td>Creator Info</td>
                 <td>:</td>
                 <td>
                   {{$viewData->creatorInfo->name }} <br>
-                  {{$viewData->created_at->format('d-M-Y | h:m:s A ') }}
+                  {{$viewData->created_at->format('d-M-Y | h:i:s A ') }}
                 </td>
               </tr>
-              @if($viewData->income_editor != '')
+              @if($viewData->expense_editor != '')
               <tr>
-                <td>Editor</td>
+                <td>Editor Info</td>
                 <td>:</td>
                 <td>{{$viewData->editorInfo->name }} <br>
-                  {{$viewData->updated_at->format('d-M-Y | h:m:s A ') }}
+                  {{$viewData->updated_at->format('d-M-Y | h:i:s A ') }}
                 </td>
               </tr>
               @endif

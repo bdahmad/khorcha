@@ -52,8 +52,8 @@ Route::post('/dashboard/income/category/delete', [IncomeCategoryController::clas
 
 Route::get('/dashboard/expense/', [ExpenseController::class, 'index'])->name('all-expense');
 Route::get('/dashboard/expense/add', [ExpenseController::class, 'add'])->name('add-expense');
-Route::get('/dashboard/expense/edit', [ExpenseController::class, 'edit'])->name('edit-expense');
-Route::get('/dashboard/expense/view', [ExpenseController::class, 'view'])->name('view-expense');
+Route::get('/dashboard/expense/edit/{slug}', [ExpenseController::class, 'edit'])->name('edit-expense');
+Route::get('/dashboard/expense/view/{slug}', [ExpenseController::class, 'view'])->name('view-expense');
 Route::post('/dashboard/expense/submit', [ExpenseController::class, 'insert'])->name('insert-expense');
 Route::post('/dashboard/expense/update', [ExpenseController::class, 'update'])->name('update-expense');
 Route::post('/dashboard/expense/softdelete', [ExpenseController::class, 'softdelete'])->name('softDelete-expense');
@@ -73,6 +73,7 @@ Route::post('/dashboard/expense/category/delete', [ExpenseCategoryController::cl
 Route::get('/dashboard/recycle/', [RecycleController::class, 'index'])->name('recycleBin');
 Route::get('/dashboard/recycle/user', [RecycleController::class, 'user'])->name('');
 Route::get('/dashboard/recycle/income', [RecycleController::class, 'income'])->name('');
+Route::get('/dashboard/recycle/expense', [RecycleController::class, 'expense'])->name('');
 Route::get('/dashboard/recycle/income/category', [RecycleController::class, 'incomeCategory'])->name('');
 Route::get('/dashboard/recycle/expense/category', [RecycleController::class, 'expenseCategory'])->name('');
 

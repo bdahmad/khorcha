@@ -52,7 +52,7 @@
               <tr>
                 <td>Created At</td>
                 <td>:</td>
-                <td>{{$viewData->created_at->format('d-M-Y | h:m:s A') }}</td>
+                <td>{{$viewData->created_at->format('d-M-Y | h:i:s A') }}</td>
               </tr>
               @if($viewData->income_cate_editor != '')
               <tr>
@@ -65,7 +65,7 @@
               <tr>
                 <td>Updated At</td>
                 <td>:</td>
-                <td>{{$viewData->updated_at->format('d-M-Y | h:m:s A ') }}</td>
+                <td>{{$viewData->updated_at->format('d-M-Y | h:i:s A ') }}</td>
               </tr>
               @endif
             </table>
