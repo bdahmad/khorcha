@@ -14,7 +14,7 @@ use App\Http\Controllers\RecycleController;
 use App\Http\Controllers\ReportController;
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('auth.login');
 });
 
 // admin section start
@@ -24,7 +24,7 @@ Route::get('/dashboard/user', [UserController::class, 'index'])->name('all-user'
 Route::get('/dashboard/user/add', [UserController::class, 'add'])->name('add-user');
 Route::get('/dashboard/user/edit', [UserController::class, 'edit'])->name('edit-user');
 Route::get('/dashboard/user/view', [UserController::class, 'view'])->name('view-user');
-Route::post('/dashboard/user/submit', [UserController::class, 'insert'])->name('');
+Route::post('/dashboard/user/submit', [UserController::class, 'insert'])->name('insert.user');
 Route::post('/dashboard/user/update', [UserController::class, 'update'])->name('');
 Route::post('/dashboard/user/softdelete', [UserController::class, 'softdelete'])->name('');
 Route::post('/dashboard/user/restore', [UserController::class, 'restore'])->name('');
