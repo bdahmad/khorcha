@@ -18,7 +18,7 @@ Route::get('/', function () {
 });
 
 // admin section start
-Route::get('/dashboard', [AdminController::class, 'index']);
+Route::get('/dashboard', [AdminController::class, 'index'])->name('dashboard');
 
 Route::get('/dashboard/user', [UserController::class, 'index'])->name('all-user');
 Route::get('/dashboard/user/add', [UserController::class, 'add'])->name('add-user');

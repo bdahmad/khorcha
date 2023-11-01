@@ -55,9 +55,13 @@
             <label class="col-sm-3 col-form-label col_form_label">User Role<span class="req_star">*</span>:</label>
             <div class="col-sm-4">
               <select class="form-control form_control" id="" name="">
-                <option>Select Role</option>
-                <option value="">Superadmin</option>
-                <option value="">Admin</option>
+                <option value="">Select Role</option>
+                @php 
+                  $allRole = App\Models\Role::where('role_status',1)->get();
+                @endphp
+                @foreach($allRole as $all)
+                <option value="{{ $all->role_id }}">{{ $all->role_name }}</option>
+                @endforeach
               </select>
             </div>
           </div>
