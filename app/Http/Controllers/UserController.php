@@ -35,8 +35,8 @@ class UserController extends Controller
             'name' => 'required',
             'email' => 'required',
             'username' => 'required',
-            'password' => 'required',
-            'confirmPassword' => 'required',
+            'password' => 'required | min:8',
+            'confirmPassword' => 'required | required_with:password|same:password|min:8',
             'role' => 'required',
         ],[
             'name.required' => 'Please enter Full name.',
