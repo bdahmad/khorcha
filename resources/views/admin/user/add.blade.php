@@ -35,7 +35,7 @@
           <div class="row mb-3 {{ $errors->has('name')?'has-error':'' }}">
             <label class="col-sm-3 col-form-label col_form_label">Name<span class="req_star">*</span>:</label>
             <div class="col-sm-7">
-              <input type="text" class="form-control form_control" id="" name="name">
+              <input type="text" class="form-control form_control" id="" name="name" value="{{old('name')}}">
               @if($errors->has('name'))
               <span class="invalid-feedback " role="alert">
                 <strong>{{$errors->first('name')}}</strong>
@@ -46,7 +46,7 @@
           <div class="row mb-3 {{ $errors->has('phone')?'has-error':'' }}">
             <label class="col-sm-3 col-form-label col_form_label">Phone:</label>
             <div class="col-sm-7">
-              <input type="text" class="form-control form_control" id="" name="phone">
+              <input type="text" class="form-control form_control" id="" name="phone" value="{{old('phone')}}">
               @if($errors->has('phone'))
               <span class="invalid-feedback " role="alert">
                 <strong>{{$errors->first('phone')}}</strong>
@@ -57,7 +57,7 @@
           <div class="row mb-3 {{ $errors->has('email')?'has-error':'' }}">
             <label class="col-sm-3 col-form-label col_form_label">Email<span class="req_star">*</span>:</label>
             <div class="col-sm-7">
-              <input type="email" class="form-control form_control" id="" name="email">
+              <input type="email" class="form-control form_control" id="" name="email" value="{{old('email')}}">
               @if($errors->has('email'))
               <span class="invalid-feedback " role="alert">
                 <strong>{{$errors->first('email')}}</strong>
@@ -68,7 +68,7 @@
           <div class="row mb-3 {{ $errors->has('username')?'has-error':'' }}">
             <label class="col-sm-3 col-form-label col_form_label">Username<span class="req_star">*</span>:</label>
             <div class="col-sm-7">
-              <input type="text" class="form-control form_control" id="" name="username">
+              <input type="text" class="form-control form_control" id="" name="username" value="{{old('username')}}">
               @if($errors->has('username'))
               <span class="invalid-feedback " role="alert">
                 <strong>{{$errors->first('username')}}</strong>

@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Models\User;
 use Illuminate\Support\Facades\Hash;
 use Carbon\Carbon;
+use Intervention\Image\Facades\Image;
 
 class UserController extends Controller
 {
@@ -58,6 +59,16 @@ class UserController extends Controller
             'slug' => $slug,
             'created_at' => Carbon::now()->toDateTimeString(),
         ]);
+        if($request->hasFile('photo')){
+            $image = $request->file('photo');
+            $imageName = 'User_'.$insert.'_'.time().'_'.$image->getClientOriginalExtension();
+            Image::make($imageName)->save('uploads/users/',$imageName);
+
+            User::where('id',$insert)->update([
+                'photo' => $imageName,
+                'created_at' => Carbon::now()->toDateTimeString(),
+            ]);
+        }
         if($insert){
             return redirect()->route('add-user')->with('success','Successfully add new user.');
         }else{
