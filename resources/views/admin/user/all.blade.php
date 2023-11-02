@@ -26,12 +26,13 @@
             </tr>
           </thead>
           <tbody>
+            @foreach($all as $data)
             <tr>
-              <td>Saidul Islam Uzzal</td>
-              <td>01710726035</td>
-              <td>uzzalbd.creative@gmail.com</td>
-              <td>uzzalbd</td>
-              <td>---</td>
+              <td>{{$data->name}}</td>
+              <td>{{$data->phone}}</td>
+              <td>{{$data->email}}</td>
+              <td>{{$data->username}}</td>
+              <td>{{$data->roleInfo->role_name}}</td>
               <td>
                 <div class="btn-group btn_group_manage" role="group">
                   <button type="button" class="btn btn-sm btn-dark dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">Manage</button>
@@ -43,40 +44,7 @@
                 </div>
               </td>
             </tr>
-            <tr>
-              <td>Creative System Limited</td>
-              <td>01966999777</td>
-              <td>creative@gmail.com</td>
-              <td>creative</td>
-              <td>---</td>
-              <td>
-                <div class="btn-group btn_group_manage" role="group">
-                  <button type="button" class="btn btn-sm btn-dark dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">Manage</button>
-                  <ul class="dropdown-menu">
-                    <li><a class="dropdown-item" href="{{route('view-user')}}">View</a></li>
-                    <li><a class="dropdown-item" href="{{route('edit-user')}}">Edit</a></li>
-                    <li><a class="dropdown-item" href="#">Delete</a></li>
-                  </ul>
-                </div>
-              </td>
-            </tr>
-            <tr>
-              <td>Shahin Alom</td>
-              <td>01725191028</td>
-              <td>shahin@gmail.com</td>
-              <td>shahin</td>
-              <td>---</td>
-              <td>
-                <div class="btn-group btn_group_manage" role="group">
-                  <button type="button" class="btn btn-sm btn-dark dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">Manage</button>
-                  <ul class="dropdown-menu">
-                    <li><a class="dropdown-item" href="#">View</a></li>
-                    <li><a class="dropdown-item" href="#">Edit</a></li>
-                    <li><a class="dropdown-item" href="#">Delete</a></li>
-                  </ul>
-                </div>
-              </td>
-            </tr>
+            @endforeach
           </tbody>
         </table>
       </div>

@@ -17,7 +17,8 @@ class UserController extends Controller
     }
     public function index()
     {
-        return view('admin.user.all');
+        $all = User::where('status',1)->orderBy('id','DESC')->get();
+        return view('admin.user.all',compact('all'));
     }
     public function add()
     {
@@ -61,8 +62,8 @@ class UserController extends Controller
         ]);
         if($request->hasFile('photo')){
             $image = $request->file('photo');
-            $imageName = 'User_'.$insert.'_'.time().'_'.$image->getClientOriginalExtension();
-            Image::make($imageName)->save('uploads/users/',$imageName);
+            $imageName = 'User_'.$insert.'_'.time().'.'.$image->getClientOriginalExtension();
+            Image::make($image)->resize(250, 250)->save('uploads/users/'.$imageName);
 
             User::where('id',$insert)->update([
                 'photo' => $imageName,

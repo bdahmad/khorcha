@@ -34,7 +34,9 @@ class User extends Authenticatable
         'password',
         'remember_token',
     ];
-
+    public function roleInfo(){
+        return $this->belongsTo('App\Models\Role','role', 'role_id');
+    }
     /**
      * The attributes that should be cast.
      *
