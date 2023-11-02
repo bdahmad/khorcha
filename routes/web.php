@@ -22,10 +22,10 @@ Route::get('/dashboard', [AdminController::class, 'index'])->name('dashboard');
 
 Route::get('/dashboard/user', [UserController::class, 'index'])->name('all-user');
 Route::get('/dashboard/user/add', [UserController::class, 'add'])->name('add-user');
-Route::get('/dashboard/user/edit', [UserController::class, 'edit'])->name('edit-user');
-Route::get('/dashboard/user/view', [UserController::class, 'view'])->name('view-user');
+Route::get('/dashboard/user/edit/{slug}', [UserController::class, 'edit'])->name('edit-user');
+Route::get('/dashboard/user/view/{slug}', [UserController::class, 'view'])->name('view-user');
 Route::post('/dashboard/user/submit', [UserController::class, 'insert'])->name('insert.user');
-Route::post('/dashboard/user/update', [UserController::class, 'update'])->name('');
+Route::post('/dashboard/user/update', [UserController::class, 'update'])->name('update.user');
 Route::post('/dashboard/user/softdelete', [UserController::class, 'softdelete'])->name('');
 Route::post('/dashboard/user/restore', [UserController::class, 'restore'])->name('');
 Route::post('/dashboard/user/delete', [UserController::class, 'delete'])->name('');

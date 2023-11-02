@@ -24,13 +24,15 @@ class UserController extends Controller
     {
         return view('admin.user.add');
     }
-    public function edit()
+    public function edit($slug)
     {
-        return view('admin.user.edit');
+        $data = User::where('status',1)->where('slug',$slug)->firstOrfail();
+        return view('admin.user.edit',compact('data'));
     }
-    public function view()
+    public function view($slug)
     {
-        return view('admin.user.view');
+        $data = User::where('status',1)->where('slug',$slug)->firstOrfail();
+        return view('admin.user.view',compact('data'));
     }
     public function insert(Request $request)
     {
@@ -53,6 +55,7 @@ class UserController extends Controller
 
         $insert = User::insertGetId([
             'name' => $request['name'],
+            'phone' => $request['phone'],
             'email' => $request['email'],
             'username' => $request['username'],
             'password' => Hash::make($request['password']),

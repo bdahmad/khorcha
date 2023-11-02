@@ -67,7 +67,7 @@ body{
 
 .sidebar_part{
     background-color: #252c34;
-    height: 88vh;
+    min-height: 100vh;
     padding-left: 0px;
     padding-right: 0px;
 }
