@@ -65,7 +65,7 @@
       </div>
       <div class="card-footer">
         <div class="btn-group" role="group" aria-label="Button group">
-          <button type="button" class="btn btn-sm btn-dark">Print</button>
+          <button type="button" onclick="window.print()" class="btn btn-sm btn-dark">Print</button>
           <a href="{{route('pdf-income')}}" class="btn btn-sm btn-secondary">PDF</a>
           <a href="{{route('excel-income')}}" class="btn btn-sm btn-dark">Excel</a>
         </div>
