@@ -121,13 +121,23 @@ class UserController extends Controller
         }
 
     }
-    public function delete()
+    public function softDelete(Request $request)
     {
-    }
-    public function softDelete()
-    {
+        $id = $request['modal_id'];
+        $soft = User::where('status',1)->where('id',$id)->update([
+            'status' => 0,
+            'updated_at' => Carbon::now()->toDateTimeString(),
+        ]);
+        if($soft){
+            return redirect()->route('all-user')->with('success',' Successfully delete user information.');
+        }else{
+            return redirect()->route('all-user')->with('error',' Operation failed.');
+        }
     }
     public function restore()
+    {
+    }
+    public function delete()
     {
     }
 }
