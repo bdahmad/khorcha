@@ -39,6 +39,7 @@ Route::post('/dashboard/income/update', [IncomeController::class, 'update'])->na
 Route::post('/dashboard/income/softdelete', [IncomeController::class, 'softdelete'])->name('softDelete-income');
 Route::post('/dashboard/income/restore', [IncomeController::class, 'restore'])->name('restore-income');
 Route::post('/dashboard/income/delete', [IncomeController::class, 'delete'])->name('delete-income');
+Route::get('/dashboard/income/pdf', [IncomeController::class, 'pdf'])->name('pdf-income');
 
 Route::get('/dashboard/income/category', [IncomeCategoryController::class, 'index'])->name('all-in-cate');
 Route::get('/dashboard/income/category/add', [IncomeCategoryController::class, 'add'])->name('add-in-cate');

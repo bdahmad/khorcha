@@ -8,6 +8,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Str;
 use Illuminate\Support\Facades\Session;
 use Illuminate\Support\Facades\Auth;
+use PDF;
 
 class IncomeController extends Controller
 {
@@ -17,6 +18,7 @@ class IncomeController extends Controller
     }
     public function index()
     {
+        $allData = Income::where('income_status', 1)->orderBy('income_date', 'DESC')->get(); // get all data where status = 1 and desc order
         $allData = Income::where('income_status', 1)->orderBy('income_date', 'DESC')->get(); // get all data where status = 1 and desc order
         return view('admin.income.main.all', compact('allData'));
     }
@@ -145,5 +147,11 @@ class IncomeController extends Controller
             Session::flash('error', ' Operation failed.');
             return redirect('dashboard/recycle/income');
         }
+    }
+    public function pdf(){
+        $allData = Income::where('income_status', 1)->orderBy('income_id', 'DESC')->get(); // get all data where status = 1 and desc order
+        $pdf = PDF::loadView('admin.income.main.pdf', compact('allData'));
+    
+        return $pdf->download('income.pdf');
     }
 }

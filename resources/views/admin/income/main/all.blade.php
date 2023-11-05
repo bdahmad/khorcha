@@ -66,7 +66,7 @@
       <div class="card-footer">
         <div class="btn-group" role="group" aria-label="Button group">
           <button type="button" class="btn btn-sm btn-dark">Print</button>
-          <button type="button" class="btn btn-sm btn-secondary">PDF</button>
+          <a href="{{route('pdf-income')}}" class="btn btn-sm btn-secondary">PDF</a>
           <button type="button" class="btn btn-sm btn-dark">Excel</button>
         </div>
       </div>
