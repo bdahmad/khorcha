@@ -16,6 +16,7 @@
           </div>
         </div>
         <div class="card-body">
+          <input type="hidden" name="id" value="{{$data->id}}" >
           <div class="row">
             <div class="col-md-2"></div>
             <div class="col-md-8">
@@ -101,7 +102,11 @@
               <input type="file" class="form-control form_control" id="" name="photo">
             </div>
             <div class="col-sm-2">
-              <img class="img200" src="{{asset('assets/admin')}}/images/avatar.png" alt="avatar" />
+            @if($data->photo)
+                <img class="img200" src="{{asset('uploads/users/'.$data->photo)}}" alt="user" />
+                @else
+                <img class="img200" src="{{asset('assets/admin')}}/images/avatar.png" alt="avatar" />
+                @endif
             </div>
           </div>
         </div>

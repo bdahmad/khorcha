@@ -22,6 +22,7 @@
               <th>Email</th>
               <th>Username</th>
               <th>Role</th>
+              <th>Photo</th>
               <th>Manage</th>
             </tr>
           </thead>
@@ -33,6 +34,13 @@
               <td>{{$data->email}}</td>
               <td>{{$data->username}}</td>
               <td>{{$data->roleInfo->role_name}}</td>
+              <td>
+                @if($data->photo)
+                <img height="30px" src="{{asset('uploads/users/'.$data->photo)}}" alt="user" />
+                @else
+                <img height="30px" src="{{asset('assets/admin')}}/images/avatar.png" alt="avatar" />
+                @endif
+              </td>
               <td>
                 <div class="btn-group btn_group_manage" role="group">
                   <button type="button" class="btn btn-sm btn-dark dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">Manage</button>
