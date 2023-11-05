@@ -27,8 +27,8 @@ Route::get('/dashboard/user/view/{slug}', [UserController::class, 'view'])->name
 Route::post('/dashboard/user/submit', [UserController::class, 'insert'])->name('insert.user');
 Route::post('/dashboard/user/update', [UserController::class, 'update'])->name('update.user');
 Route::post('/dashboard/user/softdelete', [UserController::class, 'softdelete'])->name('softDelete-user');
-Route::post('/dashboard/user/restore', [UserController::class, 'restore'])->name('');
-Route::post('/dashboard/user/delete', [UserController::class, 'delete'])->name('');
+Route::post('/dashboard/user/restore', [UserController::class, 'restore'])->name('restore-user');
+Route::post('/dashboard/user/delete', [UserController::class, 'delete'])->name('delete-user');
 
 Route::get('/dashboard/income', [IncomeController::class, 'index'])->name('all-income');
 Route::get('/dashboard/income/add', [IncomeController::class, 'add'])->name('add-income');

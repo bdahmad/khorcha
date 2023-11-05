@@ -134,10 +134,27 @@ class UserController extends Controller
             return redirect()->route('all-user')->with('error',' Operation failed.');
         }
     }
-    public function restore()
+    public function restore(Request $request)
     {
+        $id = $request['restore_id'];
+        $soft = User::where('status',0)->where('id',$id)->update([
+            'status' => 1,
+            'updated_at' => Carbon::now()->toDateTimeString(),
+        ]);
+        if($soft){
+            return redirect()->route('user')->with('success',' Successfully restore user information.');
+        }else{
+            return redirect()->route('user')->with('error',' Operation failed.');
+        }
     }
-    public function delete()
+    public function delete(Request $request)
     {
+        $id = $request['delete_id'];
+        $soft = User::where('status',0)->where('id',$id)->delete([]);
+        if($soft){
+            return redirect()->route('user')->with('success',' Successfully permanently delete user information.');
+        }else{
+            return redirect()->route('user')->with('error',' Operation failed.');
+        }
     }
 }

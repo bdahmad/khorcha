@@ -1,7 +1,7 @@
 @extends('layouts/admin')
 @section('content')
-@php 
-   $all = App\Models\Income::where('income_status',0)->orderBy('income_id','DESC')->get();
+@php
+$all = App\Models\User::where('status',0)->orderBy('id','DESC')->get();
 @endphp
 <div class="row">
   <div class="col-md-12">
@@ -9,7 +9,7 @@
       <div class="card-header">
         <div class="row">
           <div class="col-md-8 card_title_part">
-            <i class="fab fa-gg-circle"></i>Recycle Income Category Information
+            <i class="fab fa-gg-circle"></i>User Information
           </div>
           <div class="col-md-4 card_button_part">
             <a href="{{route('recycleBin')}}" class="btn btn-sm btn-dark"><i class="fas fa-th"></i>Recycle Bin</a>
@@ -36,27 +36,37 @@
         <table id="allTableInfo" class="table table-bordered table-striped table-hover custom_table">
           <thead class="table-dark">
             <tr>
-              <th>Date</th>
-              <th>Title</th>
-              <th>Category</th>
-              <th>Amount</th>
+              <th>Name</th>
+              <th>Phone</th>
+              <th>Email</th>
+              <th>Username</th>
+              <th>Role</th>
+              <th>Photo</th>
               <th>Manage</th>
             </tr>
           </thead>
           <tbody>
-
             @foreach($all as $data)
             <tr>
-              <td>{{ $data->income_date }}</td>
-              <td>{{ $data->income_title }}</td>
-              <td>{{ $data->categoryInfo->income_cate_name }}</td>
-              <td>{{ $data->income_amount }}</td>
+              <td>{{$data->name}}</td>
+              <td>{{$data->phone}}</td>
+              <td>{{$data->email}}</td>
+              <td>{{$data->username}}</td>
+              <td>{{$data->roleInfo->role_name}}</td>
               <td>
-                
-                  <a href="#" class="fs-5" id="restore" data-bs-toggle="modal" data-new="{{$data->income_id}}" data-bs-target="#restoreModal"><i class="fas fa-recycle mx-2 text-success"></i>  </a> 
+                @if($data->photo)
+                <img height="30px" src="{{asset('uploads/users/'.$data->photo)}}" alt="user" />
+                @else
+                <img height="30px" src="{{asset('assets/admin')}}/images/avatar.png" alt="avatar" />
+                @endif
+              </td>
+              <td>
+                <div class="btn-group btn_group_manage" role="group">
+                    <a href="#" class="fs-5" id="restore" data-bs-toggle="modal" data-new="{{$data->id}}" data-bs-target="#restoreModal"><i class="fas fa-recycle mx-2 text-success"></i> </a>
 
-                  <a href="#" class="fs-5"  id="delete" data-bs-toggle="modal" data-new="{{$data->income_id}}" data-bs-target="#deleteModal"><i class="fas fa-trash text-danger"></i></a>
-                  
+                    <a href="#" class="fs-5" id="delete" data-bs-toggle="modal" data-new="{{$data->id}}" data-bs-target="#deleteModal"><i class="fas fa-trash text-danger"></i></a>
+
+                </div>
               </td>
             </tr>
             @endforeach
@@ -75,29 +85,29 @@
 </div>
 <!--restore Modal -->
 <div class="modal fade" id="restoreModal" tabindex="-1" aria-labelledby="restoreModalLabel" aria-hidden="true">
-   <div class="modal-dialog">
-      <form action="{{route('restore-income') }}" method="post">
-         @csrf
-         <div class="modal-content">
-            <div class="modal-header">
-               <h1 class="modal-title fs-5" id="restoreModalLabel">Confirm Message</h1>
-            </div>
-            <div class="modal-body restore_body">
-               Are you sure to restore data?
-               <input type="hidden" name="restore_id" id="restore_id">
-            </div>
-            <div class="modal-footer">
-               <button type="button" class="btn btn-sm btn-danger" data-bs-dismiss="modal">Close</button>
-               <button type="submit" class="btn btn-sm btn-success">Confirm</button>
-            </div>
-         </div>
-      </form>
-   </div>
+  <div class="modal-dialog">
+    <form action="{{route('restore-user') }}" method="post">
+      @csrf
+      <div class="modal-content">
+        <div class="modal-header">
+          <h1 class="modal-title fs-5" id="restoreModalLabel">Confirm Message</h1>
+        </div>
+        <div class="modal-body restore_body">
+          Are you sure to restore data?
+          <input type="hidden" name="restore_id" id="restore_id">
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-sm btn-danger" data-bs-dismiss="modal">Close</button>
+          <button type="submit" class="btn btn-sm btn-success">Confirm</button>
+        </div>
+      </div>
+    </form>
+  </div>
 </div>
 <!--delete Modal -->
 <div class="modal fade" id="deleteModal" tabindex="-1" aria-labelledby="deleteModalLabel" aria-hidden="true">
   <div class="modal-dialog">
-    <form action="{{route('delete-income') }}" method="post">
+    <form action="{{route('delete-user') }}" method="post">
       @csrf
       <div class="modal-content">
         <div class="modal-header">
