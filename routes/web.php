@@ -40,6 +40,7 @@ Route::post('/dashboard/income/softdelete', [IncomeController::class, 'softdelet
 Route::post('/dashboard/income/restore', [IncomeController::class, 'restore'])->name('restore-income');
 Route::post('/dashboard/income/delete', [IncomeController::class, 'delete'])->name('delete-income');
 Route::get('/dashboard/income/pdf', [IncomeController::class, 'pdf'])->name('pdf-income');
+Route::get('/dashboard/income/excel', [IncomeController::class, 'excel'])->name('excel-income');
 
 Route::get('/dashboard/income/category', [IncomeCategoryController::class, 'index'])->name('all-in-cate');
 Route::get('/dashboard/income/category/add', [IncomeCategoryController::class, 'add'])->name('add-in-cate');

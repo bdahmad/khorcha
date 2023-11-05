@@ -8,6 +8,8 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Str;
 use Illuminate\Support\Facades\Session;
 use Illuminate\Support\Facades\Auth;
+use App\Exports\IncomeExport;
+use Excel;
 use PDF;
 
 class IncomeController extends Controller
@@ -153,5 +155,8 @@ class IncomeController extends Controller
         $pdf = PDF::loadView('admin.income.main.pdf', compact('allData'));
     
         return $pdf->download('income.pdf');
+    }
+    public function excel(){
+        return Excel::download(new IncomeExport, 'income.xlsx');
     }
 }
