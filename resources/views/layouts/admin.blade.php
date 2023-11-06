@@ -9,8 +9,8 @@
     <link rel="stylesheet" href="{{asset('assets/admin')}}/css/bootstrap.min.css">
     <link rel="stylesheet" href="{{asset('assets/admin')}}/css/datatables.min.css">
     <link rel="stylesheet" href="{{asset('assets/admin')}}/css/all.min.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.10.0/css/bootstrap-datepicker.min.css" integrity="sha512-34s5cpvaNG3BknEWSuOncX28vz97bRI59UnVtEEpFX536A7BtZSJHsDyFoCl8S7Dt2TPzcrCEoHBGeM4SUBDBw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <link rel="stylesheet" href="{{asset('assets/admin')}}/css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.10.0/css/bootstrap-datepicker.min.css" integrity="sha512-34s5cpvaNG3BknEWSuOncX28vz97bRI59UnVtEEpFX536A7BtZSJHsDyFoCl8S7Dt2TPzcrCEoHBGeM4SUBDBw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 </head>
 
 <body>
@@ -90,10 +90,23 @@
         </div>
     </footer>
     <script src="{{asset('assets/admin')}}/js/jquery-3.6.0.min.js"></script>
-    <script src="{{asset('assets/admin')}}/js/bootstrap.bundle.min.js"></script>
     <script src="{{asset('assets/admin')}}/js/datatables.min.js"></script>
+    <script src="{{asset('assets/admin')}}/js/bootstrap.bundle.min.js"></script>
+
     <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.10.0/js/bootstrap-datepicker.min.js" integrity="sha512-LsnSViqQyaXpD4mBBdRYeP6sRwJiJveh2ZIbW41EBrNmKxgr/LFZIiWT6yr+nycvhvauz8c2nYMhrP80YhG7Cw==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
     <script src="{{asset('assets/admin')}}/js/custom.js"></script>
+
+    <script>
+        $('#allTableDesc').DataTable({
+                "paging": true,
+                "lengthChange": false,
+                "searching": true,
+                "ordering": true,
+                "aaSorting": [[3, 'desc']],
+                "info": true,
+                "autoWidth": false,
+            });
+    </script>
 </body>
 
 </html>

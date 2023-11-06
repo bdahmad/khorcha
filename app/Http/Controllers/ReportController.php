@@ -22,11 +22,10 @@ class ReportController extends Controller
     public function summaryPdf()
     {
         return view('admin.report.summary-pdf');
-
     }
     public function summaryExcel()
     {
-
+        return view('admin.report.summary-excel');
     }
     public function currentMonth()
     {

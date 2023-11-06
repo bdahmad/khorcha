@@ -1,3 +1,5 @@
+
+
 setTimeout(function(){
    $('.alert_success').slideUp(1000);
 },5000);
@@ -34,15 +36,30 @@ $(document).ready(function(){
       "info":true,
       "autoWidth":false,
    });
+   
+
    $('#allTableDesc').DataTable({
       "paging":true,
       "lengthChange":false,
+      "searching":true,
+      "ordering":true,
+      "aaSorting": [[3,'desc']],
+      "info":true,
+      "autoWidth":false,
+   });
+   $('#allTableAsc').DataTable({
+      "paging":true,
+      "lengthChange":true,
       "searching":true,
       "ordering":true,
       "order":[[0, "asc"]],
       "info":true,
       "autoWidth":false,
    });
+   $('#exemple').DataTable({
+      "columnDefs" : [{"targets":3, "type":"date"}],
+    "order": [[ 3, "desc" ]], //or asc 
+});
 
 
 });
