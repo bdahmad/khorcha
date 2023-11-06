@@ -79,6 +79,15 @@ Route::get('/dashboard/recycle/expense', [RecycleController::class, 'expense'])-
 Route::get('/dashboard/recycle/income/category', [RecycleController::class, 'incomeCategory'])->name('');
 Route::get('/dashboard/recycle/expense/category', [RecycleController::class, 'expenseCategory'])->name('');
 
+// report all route
 Route::get('/dashboard/report/', [ReportController::class, 'index'])->name('');
+
+Route::get('/dashboard/report/summary', [ReportController::class, 'summary'])->name('summary');
+Route::get('/dashboard/report/summary/pdf', [ReportController::class, 'summaryPdf'])->name('summary.pdf');
+Route::get('/dashboard/report/summary/excel', [ReportController::class, 'summaryExcel'])->name('summary.excel');
+
+Route::get('/dashboard/report/current/month', [ReportController::class, 'currentMonth'])->name('current.month');
+Route::get('/dashboard/report/current/month/pdf', [ReportController::class, 'currentMonthPdf'])->name('current.month.pdf');
+Route::get('/dashboard/report/current/month/excel', [ReportController::class, 'currentMonthExcel'])->name('current.month.excel');
 
 require __DIR__ . '/auth.php';

@@ -38,8 +38,8 @@ $(document).ready(function(){
       "paging":true,
       "lengthChange":false,
       "searching":true,
-      "ordering":false,
-      "order":[[0, "desc"]],
+      "ordering":true,
+      "order":[[0, "asc"]],
       "info":true,
       "autoWidth":false,
    });
