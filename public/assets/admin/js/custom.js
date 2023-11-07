@@ -37,13 +37,17 @@ $(document).ready(function(){
       "autoWidth":false,
    });
    
+   $.fn.dataTable.moment('DD/MM/YY');
+   $('#example').DataTable({ 
+       "order": [[ 3, "desc" ]] 
+    });
 
    $('#allTableDesc').DataTable({
       "paging":true,
       "lengthChange":false,
       "searching":true,
       "ordering":true,
-      "aaSorting": [[3,'desc']],
+      "aaSorting": [[0,'desc']],
       "info":true,
       "autoWidth":false,
    });
@@ -58,21 +62,20 @@ $(document).ready(function(){
    });
    $('#exemple').DataTable({
       "columnDefs" : [{"targets":3, "type":"date"}],
-    "order": [[ 3, "desc" ]], //or asc 
-});
-
-
-});
-
-$(function(){
-   $('#date').datepicker({
-      autoclose: true,
-      format: 'yyyy-mm-dd',
-      todayHighlight: true,
+      "order": [[ 3, "desc" ]], //or asc 
    });
-   $('#startdate').datepicker({
-      autoclose: true,
-      format: 'yyyy-mm-dd',
-      todayHighlight: true,
+
+   $(function(){
+      $('#date').datepicker({
+         autoclose: true,
+         format: 'yyyy-mm-dd',
+         todayHighlight: true,
+      });
+      $('#startdate').datepicker({
+         autoclose: true,
+         format: 'yyyy-mm-dd',
+         todayHighlight: true,
+      });
    });
 });
+

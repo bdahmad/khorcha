@@ -2,24 +2,20 @@
 @section('content')
 
 @php
-$current_Date = Carbon\Carbon::now()->toDateTimeString();
-$current_Month = date('m',strtotime($current_Date));
-$current_Year = date('Y',strtotime($current_Date));
-$current_Month_Name = date('F',strtotime($current_Date));
 
-$allIncome =
-App\Models\Income::where('income_status',1)->whereYear('income_date','=',$current_Year)->whereMonth('income_date','=',$current_Month)->get();
-$allExpense =
-App\Models\Expense::where('expense_status',1)->whereYear('expense_date','=',$current_Year)->whereMonth('expense_date','=',$current_Month)->get();
+  $current_Date = Carbon\Carbon::now()->toDateTimeString();
+  $current_Month = date('m',strtotime($current_Date));
+  $current_Year = date('Y',strtotime($current_Date));
+  $current_Month_Name = date('F',strtotime($current_Date));
 
+  $allIncome = App\Models\Income::where('income_status',1)->whereYear('income_date','=',$current_Year)->whereMonth('income_date','=',$current_Month)->get();
+  $allExpense = App\Models\Expense::where('expense_status',1)->whereYear('expense_date','=',$current_Year)->whereMonth('expense_date','=',$current_Month)->get();
 
-$totalIncome =
-App\Models\Income::where('income_status',1)->whereYear('income_date','=',$current_Year)->whereMonth('income_date','=',$current_Month)->sum('income_amount');
-$totalExpense =
-App\Models\Expense::where('expense_status',1)->whereYear('expense_date','=',$current_Year)->whereMonth('expense_date','=',$current_Month)->sum('expense_amount');
+  $totalIncome = App\Models\Income::where('income_status',1)->whereYear('income_date','=',$current_Year)->whereMonth('income_date','=',$current_Month)->sum('income_amount');
+  $totalExpense = App\Models\Expense::where('expense_status',1)->whereYear('expense_date','=',$current_Year)->whereMonth('expense_date','=',$current_Month)->sum('expense_amount');
 
+  $total_savings = ($totalIncome-$totalExpense);
 
-$total_savings = ($totalIncome-$totalExpense);
 @endphp
 
 
@@ -38,41 +34,51 @@ $total_savings = ($totalIncome-$totalExpense);
         @endif
         </div>
         <div class="col-md-2"></div>
-        </div> <table id="allTableDesc" class="table table-bordered table-striped table-hover custom_table"> <thead
-          class="table-dark">
-        <tr> <th>Date</th> <th>Title</th>
-          <th>Category< /th> <th>Income</th> <th>Expense</th>
-        </tr> </thead> <tbody>
+        </div> 
+        <table id="allTableDesc" class="table table-bordered table-striped table-hover custom_table"> 
+          <thead class="table-dark">
+            <tr> 
+              <th>Date</th> 
+              <th>Title</th>
+              <th>Category </th> 
+              <th>Income</th> 
+              <th>Expense</th>
+            </tr> 
+          </thead> 
+          <tbody>
 
-        @foreach($allIncome as $income)
-        <tr>
-          <td>{{ date('d-m-Y',strtotime($income->income_date)) }}</td> <td>{{ $income->income_title }}</td> <td>{{
-            $income->categoryInfo->income_cate_name }}</td>
-            <td>{{ number_format($income->income_amount,2) }}</td> <td></td> </tr>
-              @endforeach
-              @foreach($allExpense as $expense)
-        <tr>
-          <td>{{ date('d-m-Y',strtotime($expense->expense_date)) }}</td>
-          <td>{{ $expense->expense_title }}</td>
-          <td>{{ $expense->categoryInfo->expense_cate_name }}</td>
-          <td></td>
-          <td>{{ number_format($expense->expense_amount,2) }}</td>
-        </tr>
-        @endforeach
+          @foreach($allIncome as $income)
+          <tr>
+            <td>{{ date('d-m-Y',strtotime($income->income_date)) }}</td> 
+            <td>{{ $income->income_title }}</td> 
+            <td>{{$income->categoryInfo->income_cate_name }}</td>
+            <td>{{ number_format($income->income_amount,2) }}</td> 
+            <td></td> 
+          </tr>
+          @endforeach
+          @foreach($allExpense as $expense)
+          <tr>
+            <td>{{ date('d-m-Y',strtotime($expense->expense_date)) }}</td>
+            <td>{{ $expense->expense_title }}</td>
+            <td>{{ $expense->categoryInfo->expense_cate_name }}</td>
+            <td></td>
+            <td>{{ number_format($expense->expense_amount,2) }}</td>
+          </tr>
+          @endforeach
 
-        <tfoot>
-          <tr>
-            <td colspan="3" class="text-end">Total:</td>
-            <td>{{number_format($totalIncome,2)}}</td>
-            <td>{{number_format($totalExpense,2)}}</td>
-          </tr>
-          <tr>
-            <td colspan="3" class="text-end">Savings:</td>
-            <td>{{number_format($total_savings,2)}}</td>
-          </tr>
-        </tfoot>
+          <tfoot>
+            <tr>
+              <td colspan="3" class="text-end">Total:</td>
+              <td>{{number_format($totalIncome,2)}}</td>
+              <td>{{number_format($totalExpense,2)}}</td>
+            </tr>
+            <tr>
+              <td colspan="3" class="text-end">Savings:</td>
+              <td>{{number_format($total_savings,2)}}</td>
+            </tr>
+          </tfoot>
         </tbody>
-        </table>
+      </table>
       </div>
       <div class="card-footer">
         <div class="btn-group" role="group" aria-label="Button group">
@@ -81,8 +87,8 @@ $total_savings = ($totalIncome-$totalExpense);
           <a href="{{route('excel-income')}}" class="btn btn-sm btn-dark">Excel</a>
         </div>
       </div>
-</div>
-</div>
+    </div>
+  </div>
 </div>
 <!-- Modal -->
 <div class="modal fade" id="softDeleteModal" tabindex="-1" aria-labelledby="softDeleteModalLabel" aria-hidden="true">
