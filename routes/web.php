@@ -1,13 +1,14 @@
 <?php
 
-use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\IncomeCategoryController;
+use App\Http\Controllers\ExpenseCategoryController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\IncomeController;
 use App\Http\Controllers\ExpenseController;
-use App\Http\Controllers\IncomeCategoryController;
-use App\Http\Controllers\ExpenseCategoryController;
+
+use App\Http\Controllers\ArchiveController;
 
 use App\Http\Controllers\RecycleController;
 
@@ -89,5 +90,8 @@ Route::get('/dashboard/report/summary/excel', [ReportController::class, 'summary
 Route::get('/dashboard/report/current/month', [ReportController::class, 'currentMonth'])->name('current.month');
 Route::get('/dashboard/report/current/month/pdf', [ReportController::class, 'currentMonthPdf'])->name('current.month.pdf');
 Route::get('/dashboard/report/current/month/excel', [ReportController::class, 'currentMonthExcel'])->name('current.month.excel');
+
+Route::get('/dashboard/archive', [ArchiveController::class, 'index'])->name('archive');
+Route::get('/dashboard/archive/month', [ArchiveController::class, 'monthArchive'])->name('month.archive');
 
 require __DIR__ . '/auth.php';
