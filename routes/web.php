@@ -13,6 +13,7 @@ use App\Http\Controllers\ArchiveController;
 use App\Http\Controllers\RecycleController;
 
 use App\Http\Controllers\ReportController;
+use App\Http\Controllers\ManageController;
 
 Route::get('/', function () {
     return view('auth.login');
@@ -93,5 +94,12 @@ Route::get('/dashboard/report/current/month/excel', [ReportController::class, 'c
 
 Route::get('/dashboard/archive', [ArchiveController::class, 'index'])->name('archive');
 Route::get('/dashboard/archive/month/{month_year}', [ArchiveController::class, 'monthArchive'])->name('month.archive');
+
+Route::controller(ManageController::class)->group(function (){
+    Route::get('/dashboard/manage','index')->name('manage');
+    Route::get('/dashboard/manage/basic','basic')->name('basic');
+    Route::get('/dashboard/manage/contact','contact')->name('contact');
+    Route::get('/dashboard/manage/social','socialMedia')->name('socialMedia');
+});
 
 require __DIR__ . '/auth.php';
