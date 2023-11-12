@@ -2,8 +2,7 @@
 @section('content')
 
 @php
-
-  $current_Date = Carbon\Carbon::now()->toDateTimeString();
+  $current_Date = $month_year;
   $current_Month = date('m',strtotime($current_Date));
   $current_Year = date('Y',strtotime($current_Date));
   $current_Month_Name = date('F',strtotime($current_Date));
@@ -15,7 +14,6 @@
   $totalExpense = App\Models\Expense::where('expense_status',1)->whereYear('expense_date','=',$current_Year)->whereMonth('expense_date','=',$current_Month)->sum('expense_amount');
 
   $total_savings = ($totalIncome-$totalExpense);
-
 @endphp
 
 

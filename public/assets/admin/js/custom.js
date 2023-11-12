@@ -8,8 +8,21 @@ setTimeout(function(){
 },10000);
 
 
+
 // modal
 $(document).ready(function(){
+   $(function(){
+      $('#date').datepicker({
+         autoclose: true,
+         format: 'yyyy-mm-dd',
+         todayHighlight: true,
+      });
+      $('#startdate').datepicker({
+         autoclose: true,
+         format: 'yyyy-mm-dd',
+         todayHighlight: true,
+      });
+   });
 // soft delete 
    $(document).on("click","#softDelete",function(){
       var deleteId = $(this).data('new');
@@ -65,17 +78,6 @@ $(document).ready(function(){
       "order": [[ 3, "desc" ]], //or asc 
    });
 
-   $(function(){
-      $('#date').datepicker({
-         autoclose: true,
-         format: 'yyyy-mm-dd',
-         todayHighlight: true,
-      });
-      $('#startdate').datepicker({
-         autoclose: true,
-         format: 'yyyy-mm-dd',
-         todayHighlight: true,
-      });
-   });
+   
 });
 

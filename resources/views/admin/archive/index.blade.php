@@ -2,15 +2,16 @@
 @section('content')
 
 @php
-$allIncome = App\Models\Income::where('income_status',1)->get();
-$allExpense = App\Models\Expense::where('expense_status',1)->get();
+$all_income=App\Models\Income::select(DB::raw('count(*) as total'),DB::raw('YEAR(income_date) year, MONTH(income_date) month'))->groupby('year','month')->orderBy('income_date','DESC')->get();
 
 
-$totalIncome = App\Models\Income::where('income_status',1)->sum('income_amount');
-$totalExpense = App\Models\Expense::where('expense_status',1)->sum('expense_amount');
+  $all_expense=App\Models\Expense::select(DB::raw('count(*) as total'),DB::raw('YEAR(expense_date) year, MONTH(expense_date) month'))->groupby('year','month')->orderBy('expense_date','DESC')->get();
+  
 
 
-$total_savings = ($totalIncome-$totalExpense);
+
+
+
 @endphp
 
 
@@ -20,7 +21,7 @@ $total_savings = ($totalIncome-$totalExpense);
       <div class="card-header"> 
         <div class="row"> 
           <div class="col-md-8 card_title_part"> 
-            <i class="fab fa-gg-circle"></i>Income Expense Statement 
+            <i class="fab fa-gg-circle"></i>Income Expense Archive 
           </div> 
           <div class="col-md-4 card_button_part"> 
             <a href="{{route('all-income')}}" class="btn btn-sm btn-dark"><i class="fas fa-th"></i>All Income</a> 
@@ -49,43 +50,69 @@ $total_savings = ($totalIncome-$totalExpense);
           <thead class="table-dark">
             <tr> 
               <th>Date</th> 
-              <th>Title</th>
-              <th>Category</th> 
               <th>Income</th> 
               <th>Expense</th>
+              <th>Savings</th> 
+              <th>Action</th>
             </tr>
           </thead>
           <tbody> 
-            @foreach($allIncome as $income) 
+            @foreach($months as $month) 
             <tr>
-              <td>{{date('d-m-Y',strtotime($income->income_date))}}</td>
-              <td>{{ $income->income_title }}</td>
-              <td>{{ $income->categoryInfo->income_cate_name }}</td>
-              <td>{{ number_format($income->income_amount,2) }}</td>
-              <td> </td>
+              <td>
+                @php 
+                  $year = $month->year;
+                  $month = $month->month;
+                  $year_month = $year.'-'.$month;
+                  $month_year = date('F-Y',strtotime($year_month));
+                  echo $month_year;
+                @endphp
+              </td>
+              <td>
+                @php 
+                  $total_income = App\Models\Income::where('income_status',1)
+                  ->whereYear('income_date','=',$year)
+                  ->whereMonth('income_date','=',$month)
+                  ->sum('income_amount');
+                  echo number_format($total_income,2);
+                @endphp
+              </td>
+              <td>
+                @php 
+                  $total_expense = App\Models\Expense::where('expense_status',1)
+                  ->whereYear('expense_date','=',$year)
+                  ->whereMonth('expense_date','=',$month)
+                  ->sum('expense_amount');
+
+                  echo number_format($total_expense,2);
+                @endphp
+              </td>
+              @if($total_income>$total_expense)
+                <td class="text-success">
+                  {{$total_income-$total_expense}}
+                </td>
+              @else
+                <td class="text-danger">
+                  {{$total_income-$total_expense}}
+                </td>
+              @endif
+              <td> 
+                <a href="{{route('month.archive',$month_year)}}" class= "btn btn-secondary btn-sm" >Details</a>
+              </td>
             </tr> 
-            @endforeach 
-            @foreach($allExpense as $expense) 
-            <tr>
-              <td>{{date('d-m-Y',strtotime($expense->expense_date)) }}</td>
-              <td>{{ $expense->expense_title }}</td>
-              <td>{{ $expense->categoryInfo->expense_cate_name }}</td>
-              <td></td>
-              <td>{{number_format($expense->expense_amount,2) }}</td>
-            </tr>
             @endforeach
 
-            <tfoot>
+            <!-- <tfoot>
               <tr>
               <td colspan="3" class="text-end">Total:</td>
-              <td>{{number_format($totalIncome,2)}}</td>
-              <td>{{number_format($totalExpense,2)}}</td>
+              <td></td>
+              <td></td>
             </tr>
             <tr>
               <td colspan="3" class="text-end">Savings:</td>
-              <td>{{number_format($total_savings,2)}}</td>
+              <td></td>
             </tr>
-            </tfoot>
+            </tfoot> -->
           </tbody>
         </table>
       </div> 
