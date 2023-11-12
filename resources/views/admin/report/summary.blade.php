@@ -45,7 +45,7 @@ $total_savings = ($totalIncome-$totalExpense);
           </div> 
           <div class=" col-md-2"></div> 
         </div>
-        <table id="example" class="table table-bordered table-striped table-hover custom_table"> 
+        <table id="allTableAsc" class="table table-bordered table-striped table-hover custom_table"> 
           <thead class="table-dark">
             <tr> 
               <th>Date</th> 

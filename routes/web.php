@@ -82,18 +82,21 @@ Route::get('/dashboard/recycle/income/category', [RecycleController::class, 'inc
 Route::get('/dashboard/recycle/expense/category', [RecycleController::class, 'expenseCategory'])->name('');
 
 // report all route
-Route::get('/dashboard/report/', [ReportController::class, 'index'])->name('');
+Route::controller(ReportController::class)->group(function (){
+    Route::get('/dashboard/report/','index')->name('report');
+    Route::get('/dashboard/report/summary','summary')->name('summary');
+    Route::get('/dashboard/report/summary/pdf','summaryPdf')->name('summary.pdf');
+    Route::get('/dashboard/report/summary/excel','summaryExcel')->name('summary.excel');
 
-Route::get('/dashboard/report/summary', [ReportController::class, 'summary'])->name('summary');
-Route::get('/dashboard/report/summary/pdf', [ReportController::class, 'summaryPdf'])->name('summary.pdf');
-Route::get('/dashboard/report/summary/excel', [ReportController::class, 'summaryExcel'])->name('summary.excel');
+    Route::get('/dashboard/report/current/month','currentMonth')->name('current.month');
+    Route::get('/dashboard/report/current/month/pdf','currentMonthPdf')->name('current.month.pdf');
+    Route::get('/dashboard/report/current/month/excel','currentMonthExcel')->name('current.month.excel');
+});
 
-Route::get('/dashboard/report/current/month', [ReportController::class, 'currentMonth'])->name('current.month');
-Route::get('/dashboard/report/current/month/pdf', [ReportController::class, 'currentMonthPdf'])->name('current.month.pdf');
-Route::get('/dashboard/report/current/month/excel', [ReportController::class, 'currentMonthExcel'])->name('current.month.excel');
-
-Route::get('/dashboard/archive', [ArchiveController::class, 'index'])->name('archive');
-Route::get('/dashboard/archive/month/{month_year}', [ArchiveController::class, 'monthArchive'])->name('month.archive');
+Route::controller(ArchiveController::class)->group(function(){
+    Route::get('/dashboard/archive','index')->name('archive');
+    Route::get('/dashboard/archive/month/{month_year}','monthArchive')->name('month.archive');
+});
 
 Route::controller(ManageController::class)->group(function (){
     Route::get('/dashboard/manage','index')->name('manage');

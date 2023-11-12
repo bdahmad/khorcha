@@ -23,6 +23,15 @@ $(document).ready(function(){
          todayHighlight: true,
       });
    });
+   $('#allTableAsc').DataTable({
+      "paging":true,
+      "lengthChange":true,
+      "searching":true,
+      "ordering":true,
+      "order":[[0, "asc"]],
+      "info":true,
+      "autoWidth":false,
+   });
 // soft delete 
    $(document).on("click","#softDelete",function(){
       var deleteId = $(this).data('new');
@@ -64,15 +73,7 @@ $(document).ready(function(){
       "info":true,
       "autoWidth":false,
    });
-   $('#allTableAsc').DataTable({
-      "paging":true,
-      "lengthChange":true,
-      "searching":true,
-      "ordering":true,
-      "order":[[0, "asc"]],
-      "info":true,
-      "autoWidth":false,
-   });
+   
    $('#exemple').DataTable({
       "columnDefs" : [{"targets":3, "type":"date"}],
       "order": [[ 3, "desc" ]], //or asc 
