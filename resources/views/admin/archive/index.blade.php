@@ -1,18 +1,6 @@
 @extends('layouts/admin')
 @section('content')
 
-@php
-$all_income=App\Models\Income::select(DB::raw('count(*) as total'),DB::raw('YEAR(income_date) year, MONTH(income_date) month'))->groupby('year','month')->orderBy('income_date','DESC')->get();
-
-
-  $all_expense=App\Models\Expense::select(DB::raw('count(*) as total'),DB::raw('YEAR(expense_date) year, MONTH(expense_date) month'))->groupby('year','month')->orderBy('expense_date','DESC')->get();
-  
-
-
-
-
-
-@endphp
 
 
 <div class="row">

@@ -71,8 +71,13 @@
               <td>{{number_format($totalExpense,2)}}</td>
             </tr>
             <tr>
-              <td colspan="3" class="text-end">Savings:</td>
-              <td>{{number_format($total_savings,2)}}</td>
+              @if($totalIncome>$totalExpense)
+                <td colspan="3" class="text-end text-success">Savings:</td>
+                <td class="text-success" >{{number_format($total_savings,2)}}</td>
+              @else
+                <td colspan="3" class="text-end text-danger">Over Expense:</td>
+                <td class="text-danger" >{{number_format($total_savings,2)}}</td>
+              @endif
             </tr>
           </tfoot>
         </tbody>
