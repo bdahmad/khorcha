@@ -35,7 +35,7 @@
           <div class="row mb-3 {{ $errors->has('basic_company')?'has-error':'' }}">
             <label class="col-sm-3 col-form-label col_form_label">Company Name<span class="req_star">*</span>:</label>
             <div class="col-sm-7">
-              <input type="text" class="form-control form_control" id="" name="basic_company" {{ old('basic_company') }}>
+              <input type="text" class="form-control form_control" id="" name="basic_companyName" value="{{ $data->basic_companyName }}">
               @if($errors->has('basic_company'))
               <span class="invalid-feedback " role="alert">
                 <strong>{{$errors->first('basic_company')}}</strong>
@@ -46,7 +46,7 @@
           <div class="row mb-3">
             <label class="col-sm-3 col-form-label col_form_label">Company Title:</label>
             <div class="col-sm-7">
-               <input type="text" class="form-control form_control" id="" name="basic_title" {{ old('basic_title') }}>
+               <input type="text" class="form-control form_control" id="" name="basic_title" value="{{ $data->basic_title }}">
             </div>
           </div>
           <div class="row mb-3">

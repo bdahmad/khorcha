@@ -36,61 +36,61 @@
             <div class="col-md-6">
                <div class="input-group mb-3">
                   <span class="input-group-text" id="basic-addon1"><i class="fab fa-facebook-f"></i></span>
-                  <input type="text" class="form-control" placeholder="">
+                  <input type="text" class="form-control" placeholder="" value="{{$data->socialMedia_facebook}}">
                </div>
             </div>       
             <div class="col-md-6">
                <div class="input-group mb-3">
                   <span class="input-group-text" id="basic-addon1"><i class="fab fa-linkedin-in"></i></span>
-                  <input type="text" class="form-control" placeholder="">
+                  <input type="text" class="form-control" placeholder="" value="{{$data->socialMedia_linkedin}}">
                </div>
             </div>       
             <div class="col-md-6">
                <div class="input-group mb-3">
                   <span class="input-group-text" id="basic-addon1"><i class="fab fa-instagram"></i></span>
-                  <input type="text" class="form-control" placeholder="">
+                  <input type="text" class="form-control" placeholder="" value="{{$data->socialMedia_instagram}}">
                </div>
             </div>       
             <div class="col-md-6">
                <div class="input-group mb-3">
                   <span class="input-group-text" id="basic-addon1"><i class="fab fa-telegram-plane"></i></span>
-                  <input type="text" class="form-control" placeholder="">
+                  <input type="text" class="form-control" placeholder="" value="{{$data->socialMedia_telegram}}">
                </div>
             </div>       
             <div class="col-md-6">
                <div class="input-group mb-3">
                   <span class="input-group-text" id="basic-addon1"><i class="fab fa-twitter"></i></span>
-                  <input type="text" class="form-control" placeholder="">
+                  <input type="text" class="form-control" placeholder="" value="{{$data->socialMedia_twitter}}">
                </div>
             </div>       
             <div class="col-md-6">
                <div class="input-group mb-3">
                   <span class="input-group-text" id="basic-addon1"><i class="fab fa-whatsapp"></i></span>
-                  <input type="text" class="form-control" placeholder="">
+                  <input type="text" class="form-control" placeholder="" value="{{$data->socialMedia_whatsapp}}">
                </div>
             </div>       
             <div class="col-md-6">
                <div class="input-group mb-3">
                   <span class="input-group-text" id="basic-addon1"><i class="fab fa-reddit-alien"></i></span>
-                  <input type="text" class="form-control" placeholder="">
+                  <input type="text" class="form-control" placeholder="" value="{{$data->socialMedia_reddit}}">
                </div>
             </div>       
             <div class="col-md-6">
                <div class="input-group mb-3">
                   <span class="input-group-text" id="basic-addon1"><i class="fab fa-weixin"></i></span>
-                  <input type="text" class="form-control" placeholder="">
+                  <input type="text" class="form-control" placeholder="" value="{{$data->socialMedia_weixin}}">
                </div>
             </div>       
             <div class="col-md-6">
                <div class="input-group mb-3">
                   <span class="input-group-text" id="basic-addon1"><i class="fab fa-discord"></i></span>
-                  <input type="text" class="form-control" placeholder="">
+                  <input type="text" class="form-control" placeholder="" value="{{$data->socialMedia_discord}}">
                </div>
             </div>       
             <div class="col-md-6">
                <div class="input-group mb-3">
                   <span class="input-group-text" id="basic-addon1"><i class="fab fa-youtube"></i></span>
-                  <input type="text" class="form-control" placeholder="">
+                  <input type="text" class="form-control" placeholder="" value="{{$data->socialMedia_youtube}}">
                </div>
             </div>      
              
