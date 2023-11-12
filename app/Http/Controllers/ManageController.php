@@ -19,12 +19,21 @@ class ManageController extends Controller
         $data = Basic::where('basic_status',1)->where('basic_id',1)->firstOrfail();
         return view ('admin.manage.basic',compact('data'));
     }
+    public function basicUpdate(){
+
+    }
     public function contact(){
         $data = Contact::where('contact_status',1)->where('contact_id',1)->firstOrfail();
         return view ('admin.manage.contact',compact('data'));
     }
+    public function contactUpdate(){
+
+    }
     public function socialMedia(){
         $data = SocialMedia::where('socialMedia_status',1)->where('socialMedia_id',1)->firstOrfail();
         return view ('admin.manage.socialMedia',compact('data'));
+    }
+    public function socialMediaUpdate(){
+        
     }
 }

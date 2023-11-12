@@ -101,8 +101,11 @@ Route::controller(ArchiveController::class)->group(function(){
 Route::controller(ManageController::class)->group(function (){
     Route::get('/dashboard/manage','index')->name('manage');
     Route::get('/dashboard/manage/basic','basic')->name('basic');
+    Route::post('/dashboard/manage/basic/update','basicUpdate')->name('update.basic');
     Route::get('/dashboard/manage/contact','contact')->name('contact');
+    Route::post('/dashboard/manage/contact/update','contactUpdate')->name('update.contact');
     Route::get('/dashboard/manage/social','socialMedia')->name('socialMedia');
+    Route::post('/dashboard/manage/social/update','socialMediaUpdate')->name('update.socialMedia');
 });
 
 require __DIR__ . '/auth.php';
