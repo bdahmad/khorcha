@@ -2,7 +2,7 @@
 @section('content')
 <div class="row">
   <div class="col-md-12 ">
-    <form method="post" action="{{ route('insert-income') }}">
+    <form method="post" action="{{ route('update.basic') }}" enctype="multipart/form-data">
       @csrf
       <div class="card mb-3">
         <div class="card-header">
@@ -51,20 +51,41 @@
           </div>
           <div class="row mb-3">
             <label class="col-sm-3 col-form-label col_form_label">Logo:</label>
-            <div class="col-sm-7">
+            <div class="col-sm-4">
                <input type="file" class="form-control form_control" id="" name="basic_logo" >
+            </div>
+            <div class="col-sm-2">
+                @if($data->basic_logo)
+                  <img height="100px" src="{{asset('uploads/basic/'.$data->basic_logo)}}" alt="user" />
+                @else
+                  <img height="100px" src="{{asset('assets/admin')}}/images/avatar.png" alt="avatar" />
+                @endif
             </div>
           </div>
           <div class="row mb-3">
             <label class="col-sm-3 col-form-label col_form_label">Footer Logo:</label>
-            <div class="col-sm-7">
+            <div class="col-sm-4">
                <input type="file" class="form-control form_control" id="" name="basic_footerLogo" >
+            </div>
+            <div class="col-sm-2">
+                @if($data->basic_footerLogo)
+                  <img height="100px" src="{{asset('uploads/basic/'.$data->basic_footerLogo)}}" alt="user" />
+                @else
+                  <img height="100px" src="{{asset('assets/admin')}}/images/avatar.png" alt="avatar" />
+                @endif
             </div>
           </div>
           <div class="row mb-3">
             <label class="col-sm-3 col-form-label col_form_label">Favicon:</label>
-            <div class="col-sm-7">
+            <div class="col-sm-4">
                <input type="file" class="form-control form_control" id="" name="basic_favicon" >
+            </div>
+            <div class="col-sm-2">
+                @if($data->basic_favicon)
+                  <img height="100px" src="{{asset('uploads/basic/'.$data->basic_favicon)}}" alt="user" />
+                @else
+                  <img height="100px" src="{{asset('assets/admin')}}/images/avatar.png" alt="avatar" />
+                @endif
             </div>
           </div>
         </div>
