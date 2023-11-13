@@ -99,6 +99,8 @@ Route::controller(ReportController::class)->group(function (){
 Route::controller(ArchiveController::class)->group(function(){
     Route::get('/dashboard/archive','index')->name('archive');
     Route::get('/dashboard/archive/month/{month_year}','monthArchive')->name('month.archive');
+
+    Route::get('/dashboard/archive/day/{date}','dayArchive')->name('day.archive');
 });
 
 Route::controller(ManageController::class)->group(function (){

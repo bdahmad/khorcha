@@ -6,9 +6,18 @@
   $current_Month = date('m',strtotime($current_Date));
   $current_Year = date('Y',strtotime($current_Date));
   $current_Month_Name = date('F',strtotime($current_Date));
+  
+  
+  $allIncome = App\Models\Income::where('income_status',1)
+    ->whereYear('income_date','=',$current_Year)
+    ->whereMonth('income_date','=',$current_Month)
+    ->get();
 
-  $allIncome = App\Models\Income::where('income_status',1)->whereYear('income_date','=',$current_Year)->whereMonth('income_date','=',$current_Month)->get();
-  $allExpense = App\Models\Expense::where('expense_status',1)->whereYear('expense_date','=',$current_Year)->whereMonth('expense_date','=',$current_Month)->get();
+  
+  $allExpense = App\Models\Expense::where('expense_status',1)
+    ->whereYear('expense_date','=',$current_Year)
+    ->whereMonth('expense_date','=',$current_Month)
+    ->get();
 
   $totalIncome = App\Models\Income::where('income_status',1)->whereYear('income_date','=',$current_Year)->whereMonth('income_date','=',$current_Month)->sum('income_amount');
   $totalExpense = App\Models\Expense::where('expense_status',1)->whereYear('expense_date','=',$current_Year)->whereMonth('expense_date','=',$current_Month)->sum('expense_amount');
@@ -41,26 +50,33 @@
               <th>Category </th> 
               <th>Income</th> 
               <th>Expense</th>
+              <th>Action</th>
             </tr> 
           </thead> 
           <tbody>
 
           @foreach($allIncome as $income)
           <tr>
-            <td>{{ date('d-m-Y',strtotime($income->income_date)) }}</td> 
+            <td>{{ date('d-F-Y',strtotime($income->income_date)) }}</td> 
             <td>{{ $income->income_title }}</td> 
             <td>{{$income->categoryInfo->income_cate_name }}</td>
             <td>{{ number_format($income->income_amount,2) }}</td> 
             <td></td> 
+            <td>
+              <a href="{{route('day.archive',date('d-F-Y',strtotime($income->income_date)))}}" class= "btn btn-secondary btn-sm" >Details</a>
+            </td>
           </tr>
           @endforeach
           @foreach($allExpense as $expense)
           <tr>
-            <td>{{ date('d-m-Y',strtotime($expense->expense_date)) }}</td>
+            <td>{{ date('d-F-Y',strtotime($expense->expense_date)) }}</td>
             <td>{{ $expense->expense_title }}</td>
             <td>{{ $expense->categoryInfo->expense_cate_name }}</td>
             <td></td>
             <td>{{ number_format($expense->expense_amount,2) }}</td>
+            <td>
+              <a href="{{route('day.archive',date('d-F-Y',strtotime($expense->expense_date)))}}" class= "btn btn-secondary btn-sm" >Details</a>
+            </td>
           </tr>
           @endforeach
 

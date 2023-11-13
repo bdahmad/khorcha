@@ -27,4 +27,7 @@ class ArchiveController extends Controller
         return view('admin.archive.current-month',compact('month_year'));
 
     }
+    public function dayArchive($date){
+        return view('admin.archive.day',compact('date'));
+    }
 }

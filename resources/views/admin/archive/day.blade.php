@@ -3,7 +3,7 @@
 
 @php
 
-  $current_Date = Carbon\Carbon::now()->toDateTimeString();
+  $current_Date = $date;
   $current_Day = date('d',strtotime($current_Date));
   $current_Month = date('m',strtotime($current_Date));
   $current_Year = date('Y',strtotime($current_Date));
@@ -25,6 +25,8 @@
     ->whereDay('income_date','=',$current_Day)
     ->sum('income_amount');
 
+    
+
   $totalExpense = App\Models\Expense::where('expense_status',1)
     ->whereYear('expense_date','=',$current_Year)
     ->whereMonth('expense_date','=',$current_Month)
@@ -38,7 +40,7 @@
 
 <div class="row"> <div class="col-md-12"> <div class="card mb-3"> <div class="card-header"> <div class="row"> <div
   class="col-md-8 card_title_part">
-  <i class="fab fa-gg-circle"></i>Today Income Expense Statement </div> <div class="col-md-4 card_button_part">
+  <i class="fab fa-gg-circle"></i>Previous Income Expense Statement </div> <div class="col-md-4 card_button_part">
     <a href="{{route('all-income')}}" class="btn btn-sm btn-dark"><i class="fas fa-th"></i>All Income</a> <a
       href="{{route('all-expense')}}" class="btn btn-sm btn-dark"><i class="fas fa-th"></i>All Expense</a> </div>
       </div> </div> <div class="card-body">
