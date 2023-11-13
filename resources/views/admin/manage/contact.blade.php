@@ -2,7 +2,7 @@
 @section('content')
 <div class="row">
   <div class="col-md-12 ">
-    <form method="post" action="{{ route('insert-income') }}">
+    <form method="post" action="{{ route('update.contact') }}" >
       @csrf
       <div class="card mb-3">
         <div class="card-header">
@@ -36,73 +36,73 @@
             <div class="col-md-6">
                <div class="input-group mb-3">
                   <span class="input-group-text" id="basic-addon1"><i class="fas fa-phone-square-alt"></i></span>
-                  <input type="text" class="form-control" placeholder="Phone No ..." value="{{$data->contact_phone1}}">
+                  <input type="text" class="form-control" placeholder="Phone No ..." name="contact_phone1" value="{{$data->contact_phone1}}">
                </div>
             </div>       
             <div class="col-md-6">
                <div class="input-group mb-3">
                   <span class="input-group-text" id="basic-addon1"><i class="fas fa-phone-square-alt"></i></span>
-                  <input type="text" class="form-control" placeholder="Phone No ..." value="{{$data->contact_phone2}}">
+                  <input type="text" class="form-control" placeholder="Phone No ..." name="contact_phone2" value="{{$data->contact_phone2}}">
                </div>
             </div>       
             <div class="col-md-6">
                <div class="input-group mb-3">
                   <span class="input-group-text" id="basic-addon1"><i class="fas fa-phone-square-alt"></i></span>
-                  <input type="text" class="form-control" placeholder="Phone No ..." value="{{$data->contact_phone3}}">
+                  <input type="text" class="form-control" placeholder="Phone No ..." name="contact_phone3" value="{{$data->contact_phone3}}">
                </div>
             </div>       
             <div class="col-md-6">
                <div class="input-group mb-3">
                   <span class="input-group-text" id="basic-addon1"><i class="fas fa-phone-square-alt"></i></span>
-                  <input type="text" class="form-control" placeholder="Phone No ..." value="{{$data->contact_phone4}}">
+                  <input type="text" class="form-control" placeholder="Phone No ..." name="contact_phone4" value="{{$data->contact_phone4}}">
                </div>
             </div>       
             <div class="col-md-6">
                <div class="input-group mb-3">
                   <span class="input-group-text" id="basic-addon1"><i class="fas fa-envelope"></i></span>
-                  <input type="text" class="form-control" placeholder="Email Address..." value="{{$data->contact_email1}}">
+                  <input type="text" class="form-control" placeholder="Email Address..." name="contact_email1" value="{{$data->contact_email1}}">
                </div>
             </div>       
             <div class="col-md-6">
                <div class="input-group mb-3">
                   <span class="input-group-text" id="basic-addon1"><i class="fas fa-envelope"></i></span>
-                  <input type="text" class="form-control" placeholder="Email Address..." value="{{$data->contact_email2}}">
+                  <input type="text" class="form-control" placeholder="Email Address..." name="contact_email2" value="{{$data->contact_email2}}">
                </div>
             </div>       
             <div class="col-md-6">
                <div class="input-group mb-3">
                   <span class="input-group-text" id="basic-addon1"><i class="fas fa-envelope"></i></span>
-                  <input type="text" class="form-control" placeholder="Email Address..." value="{{$data->contact_email3}}">
+                  <input type="text" class="form-control" placeholder="Email Address..." name="contact_email3" value="{{$data->contact_email3}}">
                </div>
             </div>       
             <div class="col-md-6">
                <div class="input-group mb-3">
                   <span class="input-group-text" id="basic-addon1"><i class="fas fa-envelope"></i></span>
-                  <input type="text" class="form-control" placeholder="Email Address..." value="{{$data->contact_email4}}">
+                  <input type="text" class="form-control" placeholder="Email Address..." name="contact_email4" value="{{$data->contact_email4}}">
                </div>
             </div>       
             <div class="col-md-6">
                <div class="input-group mb-3">
                   <span class="input-group-text" id="basic-addon1"><i class="fas fa-map-marker-alt"></i></span>
-                  <input type="text" class="form-control" placeholder="Address...." value="{{$data->contact_address1}}">
+                  <input type="text" class="form-control" placeholder="Address...." name="contact_address1" value="{{$data->contact_address1}}">
                </div>
             </div>       
             <div class="col-md-6">
                <div class="input-group mb-3">
                   <span class="input-group-text" id="basic-addon1"><i class="fas fa-map-marker-alt"></i></span>
-                  <input type="text" class="form-control" placeholder="Address...." value="{{$data->contact_address2}}">
+                  <input type="text" class="form-control" placeholder="Address...." name="contact_address2" value="{{$data->contact_address2}}">
                </div>
             </div>       
             <div class="col-md-6">
                <div class="input-group mb-3">
                   <span class="input-group-text" id="basic-addon1"><i class="fas fa-map-marker-alt"></i></span>
-                  <input type="text" class="form-control" placeholder="Address...." value="{{$data->contact_address3}}">
+                  <input type="text" class="form-control" placeholder="Address...." name="contact_address3" value="{{$data->contact_address3}}">
                </div>
             </div>       
             <div class="col-md-6">
                <div class="input-group mb-3">
                   <span class="input-group-text" id="basic-addon1"><i class="fas fa-map-marker-alt"></i></span>
-                  <input type="text" class="form-control" placeholder="Address...." value="{{$data->contact_address4}}">
+                  <input type="text" class="form-control" placeholder="Address...." name="contact_address4" value="{{$data->contact_address4}}">
                </div>
             </div>       
              

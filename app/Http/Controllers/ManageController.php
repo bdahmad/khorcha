@@ -89,8 +89,27 @@ class ManageController extends Controller
         $data = Contact::where('contact_status',1)->where('contact_id',1)->firstOrfail();
         return view ('admin.manage.contact',compact('data'));
     }
-    public function contactUpdate(){
+    public function contactUpdate(Request $request){
+        $update = Contact::where('contact_status',1)->where('contact_id',1)->update([
+            'contact_phone1' => $request->contact_phone1,
+            'contact_phone2' => $request->contact_phone2,
+            'contact_phone3' => $request->contact_phone3,
+            'contact_phone4' => $request->contact_phone4,
+            'contact_email1' => $request->contact_email1,
+            'contact_email2' => $request->contact_email2,
+            'contact_email3' => $request->contact_email3,
+            'contact_email4' => $request->contact_email4,
+            'contact_address1' => $request->contact_address1,
+            'contact_address2' => $request->contact_address2,
+            'contact_address3' => $request->contact_address3,
+            'contact_address4' => $request->contact_address4,
 
+        ]);
+        if($update){
+            return redirect()->back()->with('success','Successfully update contact information.');
+        }else{
+            return redirect()->back()->with('error','Operation Failed.');
+        }
     }
     public function socialMedia(){
         $data = SocialMedia::where('socialMedia_status',1)->where('socialMedia_id',1)->firstOrfail();

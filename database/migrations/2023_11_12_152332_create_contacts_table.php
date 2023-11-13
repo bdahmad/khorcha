@@ -13,18 +13,18 @@ return new class extends Migration
     {
         Schema::create('contacts', function (Blueprint $table) {
             $table->bigIncrements('contact_id');
-            $table->integer('contact_phone1');
-            $table->integer('contact_phone2');
-            $table->integer('contact_phone3');
-            $table->integer('contact_phone4');
-            $table->string('contact_email1',30);
-            $table->string('contact_email2',30);
-            $table->string('contact_email3',30);
-            $table->string('contact_email4',30);
-            $table->text('contact_address1');
-            $table->text('contact_address2');
-            $table->text('contact_address3');
-            $table->text('contact_address4');
+            $table->integer('contact_phone1')->nullable();
+            $table->integer('contact_phone2')->nullable();
+            $table->integer('contact_phone3')->nullable();
+            $table->integer('contact_phone4')->nullable();
+            $table->string('contact_email1',30)->nullable();
+            $table->string('contact_email2',30)->nullable();
+            $table->string('contact_email3',30)->nullable();
+            $table->string('contact_email4',30)->nullable();
+            $table->text('contact_address1')->nullable();
+            $table->text('contact_address2')->nullable();
+            $table->text('contact_address3')->nullable();
+            $table->text('contact_address4')->nullable();
             $table->integer('contact_status')->default(1);
             $table->timestamps();
         });
