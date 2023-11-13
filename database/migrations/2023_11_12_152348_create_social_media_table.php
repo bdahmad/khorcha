@@ -13,16 +13,16 @@ return new class extends Migration
     {
         Schema::create('social_media', function (Blueprint $table) {
             $table->bigIncrements('socialMedia_id');
-            $table->string('socialMedia_facebook',150);
-            $table->string('socialMedia_linkedin',150);
-            $table->string('socialMedia_instagram',150);
-            $table->string('socialMedia_telegram',150);
-            $table->string('socialMedia_twitter',150);
-            $table->string('socialMedia_whatsapp',150);
-            $table->string('socialMedia_reddit',150);
-            $table->string('socialMedia_weixin',150);
-            $table->string('socialMedia_discord',150);
-            $table->string('socialMedia_youtube',150);
+            $table->string('socialMedia_facebook',150)->nullable();
+            $table->string('socialMedia_linkedin',150)->nullable();
+            $table->string('socialMedia_instagram',150)->nullable();
+            $table->string('socialMedia_telegram',150)->nullable();
+            $table->string('socialMedia_twitter',150)->nullable();
+            $table->string('socialMedia_whatsapp',150)->nullable();
+            $table->string('socialMedia_reddit',150)->nullable();
+            $table->string('socialMedia_weixin',150)->nullable();
+            $table->string('socialMedia_discord',150)->nullable();
+            $table->string('socialMedia_youtube',150)->nullable();
             $table->integer('socialMedia_status')->default(1);
             $table->timestamps();
         });

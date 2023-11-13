@@ -115,7 +115,23 @@ class ManageController extends Controller
         $data = SocialMedia::where('socialMedia_status',1)->where('socialMedia_id',1)->firstOrfail();
         return view ('admin.manage.socialMedia',compact('data'));
     }
-    public function socialMediaUpdate(){
-        
+    public function socialMediaUpdate(Request $request){
+        $update = SocialMedia::where('socialMedia_status',1)->where('socialMedia_id',1)->update([
+            'socialMedia_facebook'=>$request->socialMedia_facebook,
+            'socialMedia_linkedin'=>$request->socialMedia_linkedin,
+            'socialMedia_instagram'=>$request->socialMedia_instagram,
+            'socialMedia_telegram'=>$request->socialMedia_telegram,
+            'socialMedia_twitter'=>$request->socialMedia_twitter,
+            'socialMedia_whatsapp'=>$request->socialMedia_whatsapp,
+            'socialMedia_reddit'=>$request->socialMedia_reddit,
+            'socialMedia_weixin'=>$request->socialMedia_weixin,
+            'socialMedia_discord'=>$request->socialMedia_discord,
+            'socialMedia_youtube'=>$request->socialMedia_youtube,
+        ]);
+        if($update){
+            return redirect()->back()->with('success','Successfully update social media information.');
+        }else{            
+            return redirect()->back()->with('error','Operation Failed.');
+        }
     }
 }
