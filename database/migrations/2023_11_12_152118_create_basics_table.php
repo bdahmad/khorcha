@@ -14,10 +14,10 @@ return new class extends Migration
         Schema::create('basics', function (Blueprint $table) {
             $table->bigIncrements('basic_id');
             $table->string('basic_companyName',30);
-            $table->string('basic_title',50);
-            $table->string('basic_logo',60);
-            $table->string('basic_footerLogo',60);
-            $table->string('basic_favicon',60);
+            $table->string('basic_title',50)->nullable();
+            $table->string('basic_logo',60)->nullable();
+            $table->string('basic_footerLogo',60)->nullable();
+            $table->string('basic_favicon',60)->nullable();
             $table->integer('basic_status')->default(1);
             $table->timestamps();
         });
