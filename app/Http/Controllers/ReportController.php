@@ -37,4 +37,7 @@ class ReportController extends Controller
     public function currentMonthExcel()
     {
     }
+    public function todayReport(){
+        return view('admin.report.today');
+    }
 }
