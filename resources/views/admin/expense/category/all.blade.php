@@ -35,6 +35,8 @@
             <tr>
               <th>Name</th>
               <th>Remarks</th>
+              <th>Transction</th>
+              <th>Amount</th>
               <th>Manage</th>
             </tr>
           </thead>
@@ -42,15 +44,23 @@
 
             @foreach($allData as $data)
             <tr>
+              @php
+                $total_expense = App\Models\Expense::where('expense_status',1)->where('expense_cate_id',$data->expense_cate_id)->sum('expense_amount');
+                $count = App\Models\expense::where('expense_status',1)->where('expense_cate_id',$data->expense_cate_id)->count();
+              @endphp
               <td>{{ $data->expense_cate_name }}</td>
-              <td>{{ $data->expense_cate_remarks }}</td>
+              <td>{{ Str::words($data->expense_cate_remarks,3) }}</td>
+              <td>{{$count}}</td>
+              <td>{{$total_expense}}</td>
               <td>
                 <div class="btn-group btn_group_manage" role="group">
                   <button type="button" class="btn btn-sm btn-dark dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">Manage</button>
                   <ul class="dropdown-menu">
                     <li><a class="dropdown-item" href="{{route('view-ex-cate',$data->expense_cate_slug)}}">View</a></li>
                     <li><a class="dropdown-item" href="{{route('edit-ex-cate',$data->expense_cate_slug)}}">Edit</a></li>
+                    @if($count==0)
                     <li><a class="dropdown-item" href="#" id="softDelete" data-bs-toggle="modal" data-new="{{$data->expense_cate_id}}" data-bs-target="#softDeleteModal">Delete</a></li>
+                    @endif
                   </ul>
                 </div>
               </td>
