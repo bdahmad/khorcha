@@ -94,6 +94,7 @@ Route::controller(ReportController::class)->group(function (){
     Route::get('/dashboard/report/current/month/excel','currentMonthExcel')->name('current.month.excel');
 
     Route::get('/dashboard/report/today','todayReport')->name('today.report');
+    Route::get('/dashboard/report/search','searchReport')->name('search.report');
 });
 
 Route::controller(ArchiveController::class)->group(function(){

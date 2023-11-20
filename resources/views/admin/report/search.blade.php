@@ -2,12 +2,14 @@
 @section('content')
 
 @php
-$allIncome = App\Models\Income::where('income_status',1)->get();
-$allExpense = App\Models\Expense::where('expense_status',1)->get();
+$getStarting = $_GET['starting'] ?? '';
+$getEnding = $_GET['ending'] ?? '';
+$allIncome = App\Models\Income::where('income_status',1)->whereBetween('income_date',[$getStarting,$getEnding])->get();
+$allExpense = App\Models\Expense::where('expense_status',1)->whereBetween('expense_date',[$getStarting,$getEnding])->get();
 
 
-$totalIncome = App\Models\Income::where('income_status',1)->sum('income_amount');
-$totalExpense = App\Models\Expense::where('expense_status',1)->sum('expense_amount');
+$totalIncome = App\Models\Income::where('income_status',1)->whereBetween('income_date',[$getStarting,$getEnding])->sum('income_amount');
+$totalExpense = App\Models\Expense::where('expense_status',1)->whereBetween('expense_date',[$getStarting,$getEnding])->sum('expense_amount');
 
 
 $total_savings = ($totalIncome-$totalExpense);
@@ -48,14 +50,14 @@ $total_savings = ($totalIncome-$totalExpense);
         <div class="row">
           <div class="col-md-2"></div>
           <div class="col-md-8">
-            <form action="{{route('search.report')}}" method="get">
+            <form action="" method="post">
               @csrf
               <div class="row mb-2">
                 <div class="col-md-5">
-                  <input type="text" class="form-control" id="startdate" name="starting" placeholder="Form">
+                  <input type="text" class="form-control" id="startdate" placeholder="Form">
                 </div>
                 <div class="col-md-5">
-                  <input type="text" class="form-control" id="enddate" name="ending" placeholder="To">
+                  <input type="text" class="form-control" id="enddate" placeholder="To">
                 </div>
                 <div class="col-md-2">
                   <input type="submit" class="btn btn-primary btn-md" >

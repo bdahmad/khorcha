@@ -22,6 +22,11 @@ $(document).ready(function(){
          format: 'yyyy-mm-dd',
          todayHighlight: true,
       });
+      $('#enddate').datepicker({
+         autoclose: true,
+         format: 'yyyy-mm-dd',
+         todayHighlight: true,
+      });
    });
    $('#allTableAsc').DataTable({
       "paging":true,
@@ -55,6 +60,15 @@ $(document).ready(function(){
       "lengthChange":true,
       "searching":true,
       "ordering":false,
+      "info":true,
+      "autoWidth":false,
+   });
+   $('#summary').DataTable({
+      "paging":false,
+      "lengthChange":true,
+      "searching":false,
+      "ordering":true,
+      "order": [[0,'asc']],
       "info":true,
       "autoWidth":false,
    });

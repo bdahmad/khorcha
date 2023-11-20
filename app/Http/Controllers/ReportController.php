@@ -40,4 +40,7 @@ class ReportController extends Controller
     public function todayReport(){
         return view('admin.report.today');
     }
+    public function searchReport(){
+        return view('admin.report.search');
+    }
 }
