@@ -40,7 +40,7 @@
 
 <div class="row"> <div class="col-md-12"> <div class="card mb-3"> <div class="card-header"> <div class="row"> <div
   class="col-md-8 card_title_part">
-  <i class="fab fa-gg-circle"></i>Previous Income Expense Statement </div> <div class="col-md-4 card_button_part">
+  <i class="fab fa-gg-circle"></i>{{$current_Day.' '.$current_Month_Name.' '.$current_Year  }} :: Income Expense Statement </div> <div class="col-md-4 card_button_part">
     <a href="{{route('all-income')}}" class="btn btn-sm btn-dark"><i class="fas fa-th"></i>All Income</a> <a
       href="{{route('all-expense')}}" class="btn btn-sm btn-dark"><i class="fas fa-th"></i>All Expense</a> </div>
       </div> </div> <div class="card-body">
